@@ -128,6 +128,9 @@ require_once("../../../includes/initialize.php");
 					                    <p class="help-text small">Number Of employees..</p>
 					                    <span class="error"><?php echo isset($no_emp_cat_error) ? $no_emp_cat_error : false; ?></span>
 					                </div>
+									<div class="col-xs-12">
+										<button class="btn btn-success glyphicon glyphicon-plus" id="add_emp_cat">Add another category</button>
+									</div> 
 								</div>
 								<div class="form-group">
 									<div class="control-label">
@@ -169,6 +172,9 @@ require_once("../../../includes/initialize.php");
 					                    <p class="help-text small">Enter other payment.</p>
 					                    <span class="error"><?php echo isset($other_payment_error) ? $other_payment_error : false; ?></span>
 					                </div>
+									<div class="col-xs-12">
+										<button class="btn btn-success glyphicon glyphicon-plus" id="add_payment">Add another payment</button>
+									</div>
 								</div>
 								<div class="form-group">
 									<div class="control-label">
@@ -251,8 +257,7 @@ require_once("../../../includes/initialize.php");
 									<p class="help-text small">Enter last name.</p>
 									<span class="error"></span>
 								</div>
-							</div>
-									
+							</div>	
 							<div class="form-group">
 								<div class="control-label">
 									<label for="" class="control-label"> Other details: </label>
@@ -317,9 +322,9 @@ require_once("../../../includes/initialize.php");
 								</div>
 								<div class="row">
 									<div class="col-xs-6">
-										<label for="" class="sr-only">Body psrt injured</label>
+										<label for="" class="sr-only">Body part injured</label>
 										<input type="text" name="pod" class="form-control" id="first_name" placeholder="Body psrt injured" value="">
-										<p class="help-text small">Enter the Body psrt injured.</p>
+										<p class="help-text small">Enter the Body part injured.</p>
 										<span class="error"></span>
 									</div>
 									<div class="col-xs-6">
