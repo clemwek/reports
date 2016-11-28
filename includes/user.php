@@ -3,22 +3,21 @@ require_once("database.php");
 
 class User extends DatabaseObject {
 
-	protected static $table_name="users";
-	protected static $db_fields = array('id', 'username', 'password', 'usertype', 'first_name', 'last_name', 'phone_number', 'email', 'region', 'country_code', 'payment');
+	protected static $table_name="user";
+	protected static $db_fields = array('id', 'username', 'password', 'first_name', 'last_name', 'id_number', 'phone_number', 'email', 'site', 'type');
 
 	public $id;
 	public $username;
 	public $password;
-	public $usertype;
 	public $first_name;
 	public $last_name;
+	public $id_number;
 	public $phone_number;
 	public $email;
-	public $region;
-	public $country_code;
-	public $payment;
+	public $site;
+	public $type;
 
-	public static function make($fname, $lname, $uname, $pword, $pnumber, $email, $uregion, $country_code, $utype, $ustatus) {
+	public static function make($fname, $lname, $uname, $pword, $id_number, $pnumber, $email, $site, $type) {
 			$user = new User();
 
 			$user->id = (INT) 0;
@@ -26,12 +25,11 @@ class User extends DatabaseObject {
 			$user->last_name = $lname;
 			$user->username = $uname;
 			$user->password = $pword;
+			$user->id_number = $id_number;
 			$user->phone_number = $pnumber;
 			$user->email = $email;
-			$user->region = $uregion;
-			$user->country_code = $country_code;
-			$user->usertype = $utype;
-			$user->payment = $ustatus;
+			$user->site = $site;
+			$user->type = $type;
 
 			return $user;
 	}
@@ -67,17 +65,6 @@ class User extends DatabaseObject {
 		$sql .= "WHERE email = '{$email}' ";
 		$result_array = self::find_by_sql($sql);
 		return !empty($result_array) ? true : false ;
-	}
-
-	public static function activate_account($user_id) {
-		global $database;
-
-		$sql  = "UPDATE users ";
-		$sql .= "SET payment='Active' ";
-		$sql .= "WHERE id = '{$user_id}' ";
-		$database->query($sql);
-
-		return ($database->affected_rows() == 1) ? true : false;
 	}
 
 	public function full_name() {
