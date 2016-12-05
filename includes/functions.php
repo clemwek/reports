@@ -37,8 +37,7 @@ function include_layout_template($template="") {
   include(SITE_ROOT.DS.'public'.DS.'layouts'.DS.$template);
 }
 
-function datetime() {
-  $dt = time();
+function datetime($dt) {
   return $mysql_datetime = strftime("%Y-%m-%d %H:%M:%S", $dt);
 }
 function remaining_time($end_date) {

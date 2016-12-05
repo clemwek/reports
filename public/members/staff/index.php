@@ -101,7 +101,7 @@ require_once("../../../includes/initialize.php");
 					                </div>
 					                <div class="col-xs-6">
 										<label for="" class="sr-only">Number Of new employees</label>
-					                    <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#newEmployee">Add new staff</button>
+					                    <button type="button" class="btn btn-primary btn-block" id="bNewStaff" data-toggle="modal" data-target="#newEmployee">Add new staff</button>
 										<p class="help-text small">Number Of new employees.</p>
 					                    <span class="error"></span>
 					                </div>
@@ -234,49 +234,15 @@ require_once("../../../includes/initialize.php");
 	<div class="modal fade" id="newEmployee" tabindex="-1" role="dialog" aria-labelledby="newEmployee">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
-				<form action="" enctype="multipart/form-data" method="post">
+				<form action="" id="newStaffForm" enctype="multipart/form-data" method="post">
 					<fieldset>
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+							<h4 class="modal-title" id="myModalLabel">New Staff</h4>
 						</div>
 						<div class="modal-body">
-							<div class="form-group">
-								<div class="control-label">
-									<label for="" class="control-label"> Staff details: </label>
-								</div>
-								<div class="col-xs-6">
-									<label for="" class="sr-only">First name</label>
-									<input type="text" name="pod" class="form-control" id="first_name" placeholder="first name" value="">
-									<p class="help-text small">Enter first name.</p>
-									<span class="error"></span>
-								</div>
-								<div class="col-xs-6">
-									<label for="" class="sr-only">Last name</label>
-									<input type="text" name="pod" class="form-control" id="first_name" placeholder="Last name" value="">
-									<p class="help-text small">Enter last name.</p>
-									<span class="error"></span>
-								</div>
-							</div>	
-							<div class="form-group">
-								<div class="control-label">
-									<label for="" class="control-label"> Other details: </label>
-								</div>
-								<div class="row">
-									<div class="col-xs-6">
-										<label for="pod" class="sr-only">Staff ID</label>
-										<input type="text" name="pod" class="form-control" id="first_name" placeholder="staff ID..." value="">
-										<p class="help-text small">Enter staff id.</p>
-										<span class="error"></span>
-									</div>
-									<div class="col-xs-6">
-										<label for="pod" class="sr-only">Staff Phone number</label>
-										<input type="text" name="pod" class="form-control" id="first_name" placeholder="phone number..." value="">
-										<p class="help-text small">Enter your phone number.</p>
-										<span class="error"></span>
-									</div>
-								</div>		
-							</div>
+							<div id="newStaffStatus"></div>
+							<div id="newStaff"></div>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
