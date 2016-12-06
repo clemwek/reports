@@ -29,7 +29,7 @@ require_once(LIB_PATH.DS.'user.php');
 require_once(LIB_PATH.DS.'site_staff.php');
 require_once(LIB_PATH.DS.'accident.php');
 require_once(LIB_PATH.DS.'cat.php');
-//require_once(LIB_PATH.DS.'dosh.php');
+require_once(LIB_PATH.DS.'dosh.php');
 require_once(LIB_PATH.DS.'incident.php');
 require_once(LIB_PATH.DS.'report.php');
 ?>

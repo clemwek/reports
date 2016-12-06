@@ -182,7 +182,7 @@ require_once("../../../includes/initialize.php");
 									</div>
 					                <div class="col-xs-6">
 					                    <label for="" class="sr-only">Accident</label>
-					                    <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#accident">Add Accident</button>
+					                    <button type="button" id="bAccident" class="btn btn-primary btn-block" data-toggle="modal" data-target="#accident">Add Accident</button>
 										<p class="help-text small">Accident.</p>
 					                    <span class="error"><?php echo isset($pod_error) ? $pod_error : false; ?></span>
 					                </div>
@@ -258,108 +258,15 @@ require_once("../../../includes/initialize.php");
 	<div class="modal fade" id="accident" tabindex="-1" role="dialog" aria-labelledby="accident">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
-				<form action="" enctype="multipart/form-data" method="post">
+				<form action="" id="accidentForm" enctype="multipart/form-data" method="post">
 					<fieldset>
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+							<h4 class="modal-title" id="myModalLabel">Accident</h4>
 						</div>
 						<div class="modal-body">
-							<div class="form-group">
-								<div class="control-label">
-									<label for="" class="control-label"> particulars of the injured person: </label>
-								</div>
-								<div class="col-xs-6">
-									<label for="" class="sr-only">Id number of the injured person</label>
-									<input type="text" name="pod" class="form-control" id="first_name" placeholder="Id number of the injured person" value="">
-									<p class="help-text small">Enter the Id number of the injured person.</p>
-									<span class="error"></span>
-								</div>
-								<div class="col-xs-6">
-									<label for="" class="sr-only">Nature of the injury</label>
-									<input type="text" name="pod" class="form-control" id="first_name" placeholder="Nature of the injury" value="">
-									<p class="help-text small">Enter the Nature of the injury.</p>
-									<span class="error"></span>
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="control-label">
-									<label for="" class="control-label"> Incident Description: </label>
-								</div>
-								<div class="row">
-									<div class="col-xs-6">
-										<label for="" class="sr-only">Body part injured</label>
-										<input type="text" name="pod" class="form-control" id="first_name" placeholder="Body psrt injured" value="">
-										<p class="help-text small">Enter the Body part injured.</p>
-										<span class="error"></span>
-									</div>
-									<div class="col-xs-6">
-										<label for="" class="sr-only">Extend of the injury</label>
-										<input type="text" name="pod" class="form-control" id="first_name" placeholder="Extend of the injury" value="">
-										<p class="help-text small">Enter the Extend of the injury.</p>
-										<span class="error"></span>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-xs-12">
-										<label for="pod" class="sr-only">Describe the incident</label>
-										<textarea type="text" name="pod" class="form-control" id="first_name" placeholder="Describe the incident..." value=""></textarea>
-										<p class="help-text small">Describe the incident/accident.</p>
-										<span class="error"></span>
-									</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="control-label">
-									<label for="" class="control-label"> Measures taken after the incident: </label>
-								</div>
-								<div class="row">
-									<div class="col-xs-6">
-										<label for="" class="sr-only">First aid</label>
-											First aid offered: <input type="radio" name="firstaid" data-toggle="collapse" href="#yesWho" aria-expanded="false" aria-controls="yesWho">Yes
-											<input type="radio" name="firstaid" data-toggle="collapse" href="#noWhy" aria-expanded="false" aria-controls="noWhy">No
-											<div class="collapse" id="yesWho">
-												<div class="well">
-													<input type="text" name="pod" class="form-control" id="first_name" placeholder="if yes name of who offed firstaid..." value="">
-												</div>
-											</div>
-											<div class="collapse" id="noWhy">
-												<div class="well">
-													<input type="text" name="pod" class="form-control" id="first_name" placeholder="if no why?..." value="">
-												</div>
-											</div>							
-										</div>
-										<div class="col-xs-6">
-											<label for="" class="sr-only">First aid</label>"
-											Was he taken to hospital: <input type="radio" name="firstaid" data-toggle="collapse" href="#yesWhere" aria-expanded="false" aria-controls="yesWhere">Yes
-											<input type="radio" name="firstaid" data-toggle="collapse" href="#whyNot" aria-expanded="false" aria-controls="whyNot">No
-											<div class="collapse" id="yesWhere">
-												<div class="well">
-													<input type="text" name="pod" class="form-control" id="first_name" placeholder="if yes where and what time..." value="">
-												</div>
-											</div>
-											<div class="collapse" id="whyNot">
-												<div class="well">
-													<input type="text" name="pod" class="form-control" id="first_name" placeholder="if no why?..." value="">
-												</div>
-											</div>				
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-xs-6">
-											<label for="pod" class="sr-only">Staff coments on the incidents.</label>
-											<textarea type="text" name="pod" class="form-control" id="first_name" placeholder="Staff coments on the incidents...." value=""></textarea>
-											<p class="help-text small">Enter your coments about the incident.</p>
-											<span class="error"></span>
-										</div>
-										<div class="col-xs-6">
-											<label for="pod" class="sr-only">Attach dobe sheet.</label>
-											<input type="file" name="pod" class="form-control" id="first_name" placeholder="Attach dobe sheet...." value="">
-											<p class="help-text small">Attach dobe sheet.</p>
-											<span class="error"></span>
-										</div>
-									</div>
-								</div>
+							<div id="accidentStatus"></div>
+							<div id="accidentAjax"></div>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

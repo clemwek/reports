@@ -51,5 +51,37 @@ switch (getMode ()) {
             }
         }
     break;
+        
+    case 'accident':
+        //get variables
+        $staff_id = $_POST['id_of_injured'];
+        $nature_of_injury = $_POST['nature_of_injured'];
+        $body_part_injury = $_POST['body_part_injured'];
+        $extent_of_injury = $_POST['ext_of_injury'];
+        $description = $_POST['incident_desc'];
+        $first_aid = $_POST['first_aid'];
+        $first_aid_explain = $_POST['firstaid_desc'];
+        $hospital = $_POST['hospital'];
+        $hospital_explain = $_POST['hospital_desc'];
+        $coment = $_POST['accident_coments'];
+        $date = datetime(time());
+        $error = false;
+        $error_array = [];
+
+        //validations
+        
+
+        //proccess/ save to the db
+        if ($error === false) {
+            $dosh_id = 1; 
+            $accident = Accident::make ($date, $staff_id, $dosh_id, $nature_of_injury, $body_part_injury, $extent_of_injury, $description, $first_aid, $hospital, $first_aid_explain, $hospital_explain, $coment);
+
+            if ($accident && $accident->create()) {
+                echo '<div class="alert alert-success" role="alert">Success <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+            } else {
+                echo 'There was an error while saving the database!!!';
+            }
+        }
+    break;
 }
 ?>

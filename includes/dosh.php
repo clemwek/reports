@@ -29,7 +29,7 @@ class Dosh extends DatabaseObject {
 	);
 
 	//Pass in $_FILE(['uploaded_file']) as an argument
-	public function attach_file($file, $dosh_name, $date) {
+	public function attach_file($file, $dosh_name) {
 		//perform error checking on the form parameters
 		if (!$file || empty($cv_name) || empty($file) || !is_array($file)) {
 			//error: nothing uploaded or the fprm parameters
@@ -46,7 +46,7 @@ class Dosh extends DatabaseObject {
 			$this->name 	= $dosh_name.basename($file['name']);
 			$this->type 	= $file['type'];
 			$this->size 	= $file['size'];
-			$this->date 	= $date;
+			$this->date 	= datetime(time());
 
 			//Don't worry about saving anything to the database yet.
 			return true; 
