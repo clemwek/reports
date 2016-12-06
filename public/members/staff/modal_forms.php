@@ -116,3 +116,36 @@
 		</div>
 	</div>
 </section>
+
+<section id="incident_load">
+	<div class="form-group">
+		<div class="control-label">
+			<label for="" class="control-label"> Description of the incident: </label>
+		</div>
+		<div class="col-xs-6">
+			<label for="short_incident_desc" class="sr-only">One sentence description of what happened</label>
+			<input type="text" name="short_incident_desc" class="form-control" id="short_incident_desc" placeholder="One sentence description of what happened" value="">
+			<p class="help-text small">One sentence description of what happened.</p>
+			<span class="error"></span>
+		</div>
+		<div class="col-xs-6">
+			<label for="" class="sr-only">Time of incident</label>
+			<input type="time" name="incident_time" class="form-control" id="incident_time" placeholder="Time of incident" value="">
+			<p class="help-text small">Time of incident.</p>
+			<span class="error"></span>
+		</div>
+	</div>		
+	<div class="form-group">
+		<div class="control-label">
+			<label for="" class="control-label"> Detailed description of the incident: </label>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<label for="incident_desc" class="sr-only">Describe the incident</label>
+				<textarea type="text" name="incident_desc" class="form-control" id="incident_desc" placeholder="Describe the incident..." value=""></textarea>
+				<p class="help-text small">Describe the incident.</p>
+				<span class="error"></span>
+			</div>
+		</div>				
+	</div>
+</section>

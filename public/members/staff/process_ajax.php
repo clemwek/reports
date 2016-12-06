@@ -83,5 +83,41 @@ switch (getMode ()) {
             }
         }
     break;
+
+    case 'incident':
+        //get variables
+        $what = $_POST['short_incident_desc'];
+        $time = $_POST['incident_time'];
+        $description = $_POST['incident_desc'];
+        $date = datetime(time());
+        $error = false;
+        $error_array = [];
+
+        //validations
+
+        //proccess/ save to the db
+        if ($error == false) {
+            $incident = Incident::make ($date, $what, $description, $time);
+
+            if ($incident && $incident->create()) {
+                echo '<div class="alert alert-success" role="alert">Success <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+            } else {
+                echo 'There was an error while saving the database!!!';
+            }
+        }
+    break;
+
+    case 'report':
+        //get the variable setup
+        $present = $_POST['no_of_present'];
+        $absent = $_POST['no_of_absent'];
+        $leave = $_POST['no_of_leave'];
+        $male = $_POST['no_of_male'];
+        $female = $_POST['no_of_female'];
+        $new = $_POST['no_of_new'];
+        $cat = $_POST['emp_cat'];
+        
+
+    break;
 }
 ?>

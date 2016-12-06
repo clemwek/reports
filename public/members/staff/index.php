@@ -47,7 +47,8 @@ require_once("../../../includes/initialize.php");
 						 Insight report
 					</div>
 					<div class="panel-body">
-						<form action="" enctype="multipart/form-data" method="post">
+						<div id="reportStatus" ></div>
+						<form action="" id="reportForm" enctype="multipart/form-data" method="post">
 							<fieldset>
 								<div class="form-group">
 									<div class="control-label">
@@ -188,7 +189,7 @@ require_once("../../../includes/initialize.php");
 					                </div>
 					                <div class="col-xs-6">
 					                    <label for="" class="sr-only">Incident</label>
-					                    <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#incident">Add Incident</button>
+					                    <button type="button" id="bIncident" class="btn btn-primary btn-block" data-toggle="modal" data-target="#incident">Add Incident</button>
 										<p class="help-text small">Incident.</p>
 					                    <span class="error"><?php echo isset($pod_error) ? $pod_error : false; ?></span>
 					                </div>
@@ -282,43 +283,15 @@ require_once("../../../includes/initialize.php");
 	<div class="modal fade" id="incident" tabindex="-1" role="dialog" aria-labelledby="incident">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
-				<form action="" enctype="multipart/form-data" method="post">
+				<form action="" id="incidentForm" enctype="multipart/form-data" method="post">
 					<fieldset>
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 							<h4 class="modal-title" id="myModalLabel">Incident Entry</h4>
 						</div>
 						<div class="modal-body">
-							<div class="form-group">
-								<div class="control-label">
-									<label for="" class="control-label"> Description of the incident: </label>
-								</div>
-								<div class="col-xs-6">
-									<label for="" class="sr-only">One sentence description of what happened</label>
-									<input type="text" name="pod" class="form-control" id="first_name" placeholder="One sentence description of what happened" value="">
-									<p class="help-text small">One sentence description of what happened.</p>
-									<span class="error"></span>
-								</div>
-								<div class="col-xs-6">
-									<label for="" class="sr-only">Time of incident</label>
-									<input type="text" name="pod" class="form-control" id="first_name" placeholder="Time of incident" value="">
-									<p class="help-text small">Time of incident.</p>
-									<span class="error"></span>
-								</div>
-							</div>		
-							<div class="form-group">
-								<div class="control-label">
-									<label for="" class="control-label"> Detailed description of the incident: </label>
-								</div>
-								<div class="row">
-									<div class="col-xs-12">
-										<label for="pod" class="sr-only">Describe the incident</label>
-										<textarea type="text" name="pod" class="form-control" id="first_name" placeholder="Describe the incident..." value=""></textarea>
-										<p class="help-text small">Describe the incident.</p>
-										<span class="error"></span>
-									</div>
-								</div>				
-							</div>
+							<div id="incidentStatus"></div>
+							<div id="incidentAjax"></div>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

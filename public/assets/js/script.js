@@ -1,6 +1,7 @@
 $('document').ready(function() {
     loadNewStaffForm();
     loadAccidentForm();
+    loadIncidentForm();
 
     $('#newStaffForm').on('submit', function (event) {
         event.preventDefault();//prevent form submit
@@ -39,6 +40,42 @@ $('document').ready(function() {
         //alert('This works!');
     });
 
+    //ajax for incident for ajax
+    $('#incidentForm').on('submit', function (event) {
+        event.preventDefault();//prevent form submit
+        //set up variables
+        var mode = 'incident';
+        var data = $('#incidentForm').serialize()+'&mode='+mode;
+
+        $.ajax ({
+            url: 'process_ajax.php',
+            type: 'POST',
+            data: data,
+             success: function (data) {
+                 $('#incidentStatus').html(data);
+                 $('#incidentAjax').load('modal_forms.php #incident_load');
+             }
+        });
+        //alert('This works!');
+    });
+
+    //ajax for report form
+    $('#reportForm').on('submit', function (event) {
+        event.preventDefault();//prevent form submit
+        //set up variables
+        var mode = 'report';
+        var data = $('#incidentForm').serialize()+'&mode='+mode;
+
+        $.ajax ({
+            url: 'process_ajax',
+            type: 'POST',
+            data: data,
+            success: function (data) {
+                $('#reportStatus').html(data);
+            }
+        });
+    });
+
 });
 
 function loadNewStaffForm() {
@@ -52,5 +89,11 @@ function loadAccidentForm() {
     $('#bAccident').on('click', function () {
         //alert ('Working');
         $('#accidentAjax').load('modal_forms.php #accident_load');
+    });
+}
+
+function loadIncidentForm() {
+    $('#bIncident').on('click', function () {
+        $('#incidentAjax').load('modal_forms.php #incident_load');
     });
 }
