@@ -2,6 +2,8 @@ $('document').ready(function() {
     loadNewStaffForm();
     loadAccidentForm();
     loadIncidentForm();
+    loadPaymentForm();
+    loadCatForm();
 
     $('#newStaffForm').on('submit', function (event) {
         event.preventDefault();//prevent form submit
@@ -95,5 +97,17 @@ function loadAccidentForm() {
 function loadIncidentForm() {
     $('#bIncident').on('click', function () {
         $('#incidentAjax').load('modal_forms.php #incident_load');
+    });
+}
+
+function loadCatForm() {
+    $('#bAddCat').on('click', function () {
+        $('#catAjax').load('modal_forms.php #cat_load');
+    });
+}
+
+function loadPaymentForm() {
+    $('#bAddPayment').on('click', function () {
+        $('#paymentAjax').load('modal_forms.php #payment_load');
     });
 }
