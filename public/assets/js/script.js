@@ -61,15 +61,53 @@ $('document').ready(function() {
         //alert('This works!');
     });
 
+    //ajax for categories for ajax
+    $('#catForm').on('submit', function (event) {
+        event.preventDefault();//prevent form submit
+        //set up variables
+        var mode = 'cat';
+        var data = $('#catForm').serialize()+'&mode='+mode;
+
+        $.ajax ({
+            url: 'process_ajax.php',
+            type: 'POST',
+            data: data,
+             success: function (data) {
+                 $('#catStatus').html(data);
+                 $('#catAjax').load('modal_forms.php #cat_load');
+             }
+        });
+        //alert('This works!');
+    });
+
+    //ajax for payment for ajax
+    $('#paymentForm').on('submit', function (event) {
+        event.preventDefault();//prevent form submit
+        //set up variables
+        var mode = 'payment';
+        var data = $('#paymentForm').serialize()+'&mode='+mode;
+
+        $.ajax ({
+            url: 'process_ajax.php',
+            type: 'POST',
+            data: data,
+             success: function (data) {
+                 $('#paymentStatus').html(data);
+                 $('#paymentAjax').load('modal_forms.php #payment_load');
+             }
+        });
+        //alert('This works!');
+    });
+
     //ajax for report form
     $('#reportForm').on('submit', function (event) {
         event.preventDefault();//prevent form submit
         //set up variables
         var mode = 'report';
-        var data = $('#incidentForm').serialize()+'&mode='+mode;
+        var data = $('#reportForm').serialize()+'&mode='+mode;
 
         $.ajax ({
-            url: 'process_ajax',
+            url: 'process_ajax.php',
             type: 'POST',
             data: data,
             success: function (data) {

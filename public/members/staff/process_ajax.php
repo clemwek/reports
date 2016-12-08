@@ -67,6 +67,7 @@ switch (getMode ()) {
         $date = datetime(time());
         $error = false;
         $error_array = [];
+        $site_name = 'test';
 
         //validations
         
@@ -74,7 +75,7 @@ switch (getMode ()) {
         //proccess/ save to the db
         if ($error === false) {
             $dosh_id = 1; 
-            $accident = Accident::make ($date, $staff_id, $dosh_id, $nature_of_injury, $body_part_injury, $extent_of_injury, $description, $first_aid, $hospital, $first_aid_explain, $hospital_explain, $coment);
+            $accident = Accident::make ($date, $staff_id, $site_name, $dosh_id, $nature_of_injury, $body_part_injury, $extent_of_injury, $description, $first_aid, $hospital, $first_aid_explain, $hospital_explain, $coment);
 
             if ($accident && $accident->create()) {
                 echo '<div class="alert alert-success" role="alert">Success <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
@@ -92,14 +93,65 @@ switch (getMode ()) {
         $date = datetime(time());
         $error = false;
         $error_array = [];
+        $site_name = 'test';
 
         //validations
 
         //proccess/ save to the db
         if ($error == false) {
-            $incident = Incident::make ($date, $what, $description, $time);
+            $incident = Incident::make ($date, $site_name, $what, $description, $time);
 
             if ($incident && $incident->create()) {
+                echo '<div class="alert alert-success" role="alert">Success <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+            } else {
+                echo 'There was an error while saving the database!!!';
+            }
+        }
+    break;
+
+    case 'cat':
+        //get variables
+        $name = $_POST['emp_cat'];
+        $number = $_POST['no_emp_cat'];
+        $date = datetime(time());
+        $error = false;
+        $error_array = [];
+        $site_name = 'test';
+
+        //validations
+
+        //proccess/ save to the db
+        if ($error == false) {
+            $cat = Cat::make ($date, $site_name, $name, $number);
+
+            if ($cat && $cat->create()) {
+                echo '<div class="alert alert-success" role="alert">Success <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+            } else {
+                echo 'There was an error while saving the database!!!';
+            }
+        }
+    break;
+
+    case 'payment':
+        //get variables
+        $type = $_POST['payment_name'];
+        $amount = $_POST['amount_payment'];
+        $nhif = $_POST['nhif_payment'];
+        $nssf = $_POST['nssf_payment'];
+        $other = $_POST['other_payment'];
+        $other_exp = $_POST['other_exp'];
+        $date = datetime(time());
+        $error = false;
+        $error_array = [];
+        $site_name = 'test';
+
+        //validations
+
+        //proccess/ save to the db
+        if ($error == false) {
+            $payment = Payment::make ($date, $site_name, $type, $amount, $nhif, $nssf, $other, $other_exp);
+
+            if ($payment && $payment->create()) {
                 echo '<div class="alert alert-success" role="alert">Success <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
             } else {
                 echo 'There was an error while saving the database!!!';
@@ -111,11 +163,25 @@ switch (getMode ()) {
         //get the variable setup
         $present = $_POST['no_of_present'];
         $absent = $_POST['no_of_absent'];
-        $leave = $_POST['no_of_leave'];
+        $leave_no = $_POST['no_of_leave'];
         $male = $_POST['no_of_male'];
         $female = $_POST['no_of_female'];
         $new = $_POST['no_of_new'];
-        $cat = $_POST['emp_cat'];
+        $report_coment = $_POST['report_coment'];
+        $date = datetime(time());
+        $error = false;
+        $error_array = [];
+        $site_name = 'test';
+        $IMC_staff_id = 1;
+
+
+        $report = Report::make ($date, $present, $absent, $leave_no, $female, $male, $new, $site_name, $IMC_staff_id) ;
+
+        if ($report && $report->create()) {
+            echo '<div class="alert alert-success" role="alert">Success <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+        } else {
+            echo 'There was an error while saving the database!!!';
+        }
         
 
     break;

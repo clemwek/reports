@@ -16,13 +16,14 @@ class Cat extends DatabaseObject {
 	public static function make ($date, $site_name, $name, $number) {
 		$cat = new Cat;
 
-		$incident->id =(INT) 0;
-		$incident->date = $date;
-		$incident->site_name = $site_name;
-		$incident->name = $name;
-		$incident->number = $number;
-        
-  		return $cat;
+		//pass the variables
+		$cat->id = (INT) 0;
+		$cat->date = $date;
+		$cat->site_name = $site_name;
+		$cat->name = $name;
+		$cat->number = $number;
+
+		return $cat;
 	}
 }
 ?>

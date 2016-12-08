@@ -108,12 +108,12 @@ require_once("../../../includes/initialize.php");
 					                </div>
 								</div>
 								<div class="form-group">
-									 <div class="col-sm-6">
+									 <div class="col-xs-6">
 									 	<button id="bAddCat" class="btn btn-primary btn-block" data-toggle="modal" data-target="#cat">Add cat</button>
 									 </div>
 								</div>
 								<div class="form-group">
-									<div class="col-sm-6">
+									<div class="col-xs-6">
 									 	<button id="bAddPayment" class="btn btn-primary btn-block" data-toggle="modal" data-target="#payment">Add payment</button>
 									 </div>
 								</div>
@@ -141,14 +141,14 @@ require_once("../../../includes/initialize.php");
 									<div class="row">
 										<div class="col-xs-12">
 											<label for="" class="sr-only">Coments</label>
-											<textarea class="btn-block" type="button" placeholder="coments..." ></textarea>
+											<textarea name="report_coment" class="btn-block" type="button" placeholder="coments..." ></textarea>
 											<p class="help-text small">Coments.</p>
 											<span class="error"><?php echo isset($pod_error) ? $pod_error : false; ?></span>
 										</div>
 									</div>
 								</div>
 								
-								<input type="submit" name="submit" value="Submit form">
+								<input type="submit" class="btn btn-success" name="submit" value="Save report">
 							</fieldset>
 						</form>
 					</div>
@@ -247,7 +247,7 @@ require_once("../../../includes/initialize.php");
 	<div class="modal fade" id="cat" tabindex="-1" role="dialog" aria-labelledby="cat">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
-				<form action="" id="incidentForm" enctype="multipart/form-data" method="post">
+				<form action="" id="catForm" enctype="multipart/form-data" method="post">
 					<fieldset>
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -271,7 +271,7 @@ require_once("../../../includes/initialize.php");
 	<div class="modal fade" id="payment" tabindex="-1" role="dialog" aria-labelledby="payment">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
-				<form action="" id="incidentForm" enctype="multipart/form-data" method="post">
+				<form action="" id="paymentForm" enctype="multipart/form-data" method="post">
 					<fieldset>
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
