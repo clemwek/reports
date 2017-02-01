@@ -26,7 +26,6 @@ if (isset($_POST['submit'])) {
 
 		if ($found_user) {
 			$session->login($found_user);
-			Logins::clog("Success", $found_user->id);
 			$session->user_redirect($session->usertype);//using the function to 
 			//redirect_to("index.php");
 		} else {

@@ -13,18 +13,27 @@ require_once("../../../includes/initialize.php");
 <?php include_layout_template('header.php'); ?>
 
 	
-	<!--<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">-->
-		<!--<form role="search">
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Search">
-			</div>
-		</form>-->
-		<!--<ul class="nav menu">
-			<li class="active"><a href="profile.php"> Profile </a></li>
-			<li><a href="jobs_posted.php"> Posted Jobs</a></li>
-			<li><a href="#"> Applications Jobs</a></li>
-		</ul>	
-	</div>--><!--/.sidebar-->
+	<!-- Side bar nav-->
+<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+	<ul class="nav menu">
+		<li class="active"><a href="#">
+			<i class="glyphicon glyphicon-user visible-xs"></i> 
+			<span class="visible-sm visible-md visible-lg"><i class="glyphicon glyphicon-user"></i> Profile </span>
+		</a></li>
+		<li class="active"><a href="applied_jobs.php">
+			<i class="glyphicon glyphicon-briefcase visible-xs"></i> 
+			<span class="visible-sm visible-md visible-lg"><i class="glyphicon glyphicon-briefcase"></i> Applied Jobs </span>
+		</a></li>
+		<li class="active"><a href="available_jobs.php">
+			<i class="glyphicon glyphicon-tasks visible-xs"></i> 
+			<span class="visible-sm visible-md visible-lg"><i class="glyphicon glyphicon-tasks"></i> Available Jobs </span>
+		</a></li>
+		<!--<li class="active"><a href="#">
+			<i class="glyphicon glyphicon-user visible-xs"></i> 
+			<span class="visible-sm visible-md visible-lg"><i class="glyphicon glyphicon-user"></i> Profile </span>
+		</a></li>-->
+	</ul>
+</div><!-- End of side nav-->
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
 		<div class="row">
