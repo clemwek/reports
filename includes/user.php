@@ -24,7 +24,7 @@ class User extends DatabaseObject {
 			$user->first_name = $fname;
 			$user->last_name = $lname;
 			$user->username = $uname;
-			$user->password = $pword;
+			$user->password = password_hash($pword, PASSWORD_DEFAULT);
 			$user->id_number = $id_number;
 			$user->phone_number = $pnumber;
 			$user->email = $email;
@@ -41,10 +41,19 @@ class User extends DatabaseObject {
 
 		$sql  = "SELECT * FROM users ";
 		$sql .= "WHERE username = '{$username}' ";
-		$sql .= "AND password = '{$password}' ";
 		$sql .= "LIMIT 1";
 		$result_array = self::find_by_sql($sql);
-		return !empty($result_array) ? array_shift($result_array) : false ;
+		$result = array_shift($result_array);
+		
+		if (!empty($result)) {
+			if (password_verify($password, $result->password)) {
+				return $result;
+			}
+		} else {
+			return false;
+		}
+		
+		//return !empty($result_array) ? array_shift($result_array) : false ;
 	}
 
 	public static function username_exists($username="") {
