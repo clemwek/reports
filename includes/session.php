@@ -30,7 +30,7 @@ class Session {
 		//database should find user based on username/password
 		if ($user) {
 			$this->user_id = $_SESSION['user_id'] = $user->id;
-			$this->usertype = $_SESSION['usertype'] = $user->usertype;
+			$this->usertype = $_SESSION['usertype'] = $user->type;
 			$this->logged_in = true;
 		}
 	}
@@ -79,14 +79,12 @@ class Session {
 
 	public function user_redirect($usertype) {
 		if ($usertype=="superadmin") {
-	        redirect_to("../admin/profile.php");
+	        redirect_to("admin/index.php");
 	    } elseif ($usertype=="admin" || $usertype=="Admin") {
-	        redirect_to("staff/profile.php");
-	    } elseif ($usertype=="employer" || $usertype=="Employer") {
-	        redirect_to("employers/profile.php");
-	    } elseif ($usertype=="employee" || $usertype=="Employee") {
-	        redirect_to("employees/profile.php");
-	    } 
+	        redirect_to("analyst/index.php");
+	    } elseif ($usertype=="staff" || $usertype=="Staff") {
+	        redirect_to("staff/index.php");
+	    }  
 	}
 	
 	public static function exits ($name) {
