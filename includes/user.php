@@ -3,7 +3,7 @@ require_once("database.php");
 
 class User extends DatabaseObject {
 
-	protected static $table_name="user";
+	protected static $table_name="users";
 	protected static $db_fields = array('id', 'username', 'password', 'first_name', 'last_name', 'id_number', 'phone_number', 'email', 'site_name', 'type');
 
 	public $id;
@@ -17,7 +17,7 @@ class User extends DatabaseObject {
 	public $site_name;
 	public $type;
 
-	public static function make($fname, $lname, $uname, $pword, $id_number, $pnumber, $email, $site_name, $type) {
+	public static function make($fname, $lname, $uname, $pword, $pnumber, $id_number, $email, $site_name, $type) {
 			$user = new User();
 
 			$user->id = (INT) 0;
