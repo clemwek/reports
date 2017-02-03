@@ -20,7 +20,7 @@ require_once("../../../includes/initialize.php");
 			<i class="glyphicon glyphicon-user visible-xs"></i> 
 			<span class="visible-sm visible-md visible-lg"><i class="glyphicon glyphicon-user"></i> Profile </span>
 		</a></li>
-		<li class="active"><a href="applied_jobs.php">
+		<!--<li class="active"><a href="applied_jobs.php">
 			<i class="glyphicon glyphicon-briefcase visible-xs"></i> 
 			<span class="visible-sm visible-md visible-lg"><i class="glyphicon glyphicon-briefcase"></i> Applied Jobs </span>
 		</a></li>
@@ -28,7 +28,7 @@ require_once("../../../includes/initialize.php");
 			<i class="glyphicon glyphicon-tasks visible-xs"></i> 
 			<span class="visible-sm visible-md visible-lg"><i class="glyphicon glyphicon-tasks"></i> Available Jobs </span>
 		</a></li>
-		<!--<li class="active"><a href="#">
+		<li class="active"><a href="#">
 			<i class="glyphicon glyphicon-user visible-xs"></i> 
 			<span class="visible-sm visible-md visible-lg"><i class="glyphicon glyphicon-user"></i> Profile </span>
 		</a></li>-->
