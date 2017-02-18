@@ -9,26 +9,42 @@ require_once("../../../includes/initialize.php");
 //Find company details
 //$employer = Employer::find_by_user_id($user->id);
 
+
+//Bring in data from accidents, incidents, new employees not submited reports
+//Bring the data from json
+$data_file = '../../../includes/data.json';
+$data_json = file_get_contents($data_file);
+$data_array = json_decode($data_json, true);
 ?>
 <?php include_layout_template('header.php'); ?>
 
 	
-	<!-- Side bar nav-->
+<!-- Side bar nav-->
 <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 	<ul class="nav menu">
 		<li class="active"><a href="#">
 			<i class="glyphicon glyphicon-home visible-xs"></i> 
 			<span class="visible-sm visible-md visible-lg"><i class="glyphicon glyphicon-home"></i> Home </span>
 		</a></li>
-		<li class="active"><a href="applied_jobs.php">
+		<li class="active"><a href="#">
 			<i class="glyphicon glyphicon-eye-open visible-xs"></i> 
 			<span class="visible-sm visible-md visible-lg"><i class="glyphicon glyphicon-eye-open"></i> Sites </span>
-		</a></li>
-		<li class="active"><a href="available_jobs.php">
+		</a>
+			<?php if (isset($data_array)): ?>
+			<ul>
+				<?php foreach ($data_array['sites'] as $data): ?>
+				<li>
+					<?php echo '<a href="#" class="show_site">'.$data.'</a>'; ?>
+				</li>
+				<?php endforeach; ?>
+			</ul>
+			<?php endif; ?>
+		</li>
+		<!--<li class="active"><a href="available_jobs.php">
 			<i class="glyphicon glyphicon-tasks visible-xs"></i> 
 			<span class="visible-sm visible-md visible-lg"><i class="glyphicon glyphicon-tasks"></i> Available Jobs </span>
 		</a></li>
-		<!--<li class="active"><a href="#">
+		<li class="active"><a href="#">
 			<i class="glyphicon glyphicon-user visible-xs"></i> 
 			<span class="visible-sm visible-md visible-lg"><i class="glyphicon glyphicon-user"></i> Profile </span>
 		</a></li>-->
@@ -58,7 +74,7 @@ require_once("../../../includes/initialize.php");
 						</div>
 						<div class="col-sm-9 col-lg-7 widget-right">
 							<div class="large">120</div>
-							<div class="text-muted">Injuries</div>
+							<div class="text-muted">Accident</div>
 						</div>
 					</div>
 				</div>
