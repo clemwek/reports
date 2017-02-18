@@ -20,7 +20,14 @@ $data_json = file_get_contents($data_file);
 $data_array = json_decode($data_json, true);
 
 // Read accident data 
-$accident_count = Accident::count_all_on_date($date)
+$accident_count = Accident::count_all_on_date($date);
+
+// Read incident data 
+$incident_count = Incident::count_all_on_date($date);
+
+// Read new staff data 
+$new_staff_count = Site_staff::count_all_on_date($date);
+
 ?>
 <?php include_layout_template('header.php'); ?>
 
@@ -92,7 +99,7 @@ $accident_count = Accident::count_all_on_date($date)
 							<i class="glyphicon glyphicon-ice-lolly-tasted"></i>
 						</div>
 						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">52</div>
+							<div class="large"><?php echo $incident_count; ?></div>
 							<div class="text-muted">Incidents</div>
 						</div>
 					</div>
@@ -105,7 +112,7 @@ $accident_count = Accident::count_all_on_date($date)
 							<i class="glyphicon glyphicon-bishop"></i>
 						</div>
 						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">24</div>
+							<div class="large"><?php echo $new_staff_count; ?></div>
 							<div class="text-muted">New Employees</div>
 						</div>
 					</div>
