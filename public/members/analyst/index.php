@@ -3,6 +3,9 @@ require_once("../../../includes/initialize.php");
 //if (!$session->is_logged_in()) { redirect_to("login.php");}
 ?>
 <?php
+// Date processing
+$date = date_only(time());
+
 // This brings in the user details
 //$user = User::find_by_id($session->user_id);
 
@@ -15,6 +18,9 @@ require_once("../../../includes/initialize.php");
 $data_file = '../../../includes/data.json';
 $data_json = file_get_contents($data_file);
 $data_array = json_decode($data_json, true);
+
+// Read accident data 
+$accident_count = Accident::count_all_on_date($date)
 ?>
 <?php include_layout_template('header.php'); ?>
 
@@ -73,7 +79,7 @@ $data_array = json_decode($data_json, true);
 							<i class="glyphicon glyphicon-import"></i>
 						</div>
 						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">120</div>
+							<div class="large"><?php echo $accident_count; ?></div>
 							<div class="text-muted">Accident</div>
 						</div>
 					</div>
