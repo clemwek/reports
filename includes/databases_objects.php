@@ -15,23 +15,33 @@ class DatabaseObject {
 		}	
 	}
 
+	// Find all users with a user id
 	public static function find_all_user_id($user_id=0) {
 		global $database;
 		return static::find_by_sql("SELECT * FROM ".static::$table_name." WHERE user_id = ".$database->escape_value($user_id));
 	}
 
+	// find by id
 	public static function find_by_id($id=0) {
 		global $database;
 		$result_array = static::find_by_sql("SELECT * FROM ".static::$table_name." WHERE id = ".$database->escape_value($id)." LIMIT 1");
 		return !empty($result_array) ? array_shift($result_array) : false;
 	}
 
+	// find by user id
 	public static function find_by_user_id($user_id=0) {
 		global $database;
 		$result_array = static::find_by_sql("SELECT * FROM ".static::$table_name." WHERE user_id = ".$database->escape_value($user_id)." LIMIT 1");
 		return !empty($result_array) ? array_shift($result_array) : false;
 	}
 
+	// find all with date
+	public static function find_for_date($date) {
+		global $database;
+		return static::find_by_sql("SELECT * FROM ".static::$table_name." WHERE date = ".$database->escape_value($date));
+	}
+
+	// find by sql
 	public static function find_by_sql($sql="") {
 		global $database;
 		$result_set = $database->query($sql);
@@ -42,6 +52,7 @@ class DatabaseObject {
 		return $object_array;
 	}	
 
+	// Count all entries in the table
 	public static function count_all() {
 		global $database;
 		$sql = "SELECT COUNT(*) FROM ".static::$table_name;
@@ -50,6 +61,7 @@ class DatabaseObject {
 		return array_shift($row);
 	}	
 
+	// Count all in a field
 	public static function count_all_in($field) {
 		global $database;
 		$sql = "SELECT COUNT(*) FROM ".static::$table_name;
@@ -59,6 +71,7 @@ class DatabaseObject {
 		return array_shift($row);
 	}
 
+	// Creates an instance of a class
 	private static function instantiate($record) {
 		$class_name = get_called_class();
 		$object = new $class_name;
@@ -101,10 +114,10 @@ class DatabaseObject {
 		return $clean_attributes; 
 	}
 
-	// public function save() {
-	// 	//A new record won't have an id yet.
-	// 	return isset($this->id) ? $this->update() : $this->create() ;
-	// }
+	public function save() {
+		//A new record won't have an id yet.
+		return ($this->id!=0) ? $this->update() : $this->create() ;
+	}
 
 	public function check_save() {
 		//A new record won't have an id yet.
@@ -189,7 +202,7 @@ class DatabaseObject {
 
 	public function save_file() {
 		//A new record wont have an id yet.
-		if(isset($this->id)) {
+		if($this->id!=0) {
 			//Really just to update the caption
 			$this->update();
 		} else {
