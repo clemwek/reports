@@ -38,7 +38,7 @@ function include_layout_template($template="") {
 }
 
 function datetime($dt) {
-  return $mysql_datetime = strftime("%Y-%m-%d %H:%M:%S", $dt);
+  return strftime("%Y-%m-%d %H:%M:%S", $dt);
 }
 function remaining_time($end_date) {
   $dt = time();
