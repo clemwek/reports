@@ -69,6 +69,16 @@ class DatabaseObject {
 		$result_set = $database->query($sql);
 		$row = $database->fetch_array($result_set);
 		return array_shift($row);
+	}	
+
+	// Count all on a certain date
+	public static function count_all_on_date($date) {
+		global $database;
+		$sql = "SELECT COUNT(*) FROM ".static::$table_name;
+		$sql .= " Where date ='".$date."'";
+		$result_set = $database->query($sql);
+		$row = $database->fetch_array($result_set);
+		return array_shift($row);
 	}
 
 	// Creates an instance of a class
