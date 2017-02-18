@@ -40,6 +40,11 @@ function include_layout_template($template="") {
 function datetime($dt) {
   return strftime("%Y-%m-%d %H:%M:%S", $dt);
 }
+
+function date_only($dt) {
+  return strftime("%Y-%m-%d", $dt);
+}
+
 function remaining_time($end_date) {
   $dt = time();
 
