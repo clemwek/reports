@@ -38,7 +38,10 @@ class DatabaseObject {
 	// find all with date
 	public static function find_for_date($date) {
 		global $database;
-		return static::find_by_sql("SELECT * FROM ".static::$table_name." WHERE date = ".$database->escape_value($date));
+		// return static::find_by_sql("SELECT * FROM ".static::$table_name." WHERE date = ".$database->escape_value($date));
+
+		$sql = "SELECT * FROM ".static::$table_name." WHERE date = '".$date."'";
+		return static::find_by_sql($sql);
 	}
 
 	// find by sql
