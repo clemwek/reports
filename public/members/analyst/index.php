@@ -156,7 +156,20 @@ $new_staff_count = Site_staff::count_all_on_date($date);
 		</div><!--/.row-->
 		
 		<div class="row">
-			
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">All Site</h3>
+					</div>
+					<div class="panel-body">
+						<div class="site_repot">
+							<p><stong>Attendance: </stong><span>Present: </span> <?php echo 'number present'; ?> -- <span>Absent: </span> <?php echo 'number absent!'; ?>  -- <span>Leave: </span> <?php echo 'number Leave!'; ?> </p><hr>
+							<p><stong>Gender: </stong><span>Male: </span> <?php echo 'number Male'; ?> -- <span>Female: </span> <?php echo 'number Female!'; ?> </p><hr>
+							<p><stong>New Staff: </stong><span>Male: </span> <?php echo 'number Male'; ?> -- <span>Female: </span> <?php echo 'number Female!'; ?> -- <span>Total: </span> <?php echo 'number Total!'; ?> </p><hr>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div><!--/.row-->
 		
 		<div class="row">
