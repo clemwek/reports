@@ -28,6 +28,11 @@ $incident_count = Incident::count_all_on_date($date);
 // Read new staff data 
 $new_staff_count = Site_staff::count_all_on_date($date);
 
+
+// Read report data from the db
+$report = Report::find_for_date($date);
+// die(var_dump($report));
+// die ('<pre>'.print_r($report[0]).'</pre>');
 ?>
 <?php include_layout_template('header.php'); ?>
 
@@ -163,7 +168,7 @@ $new_staff_count = Site_staff::count_all_on_date($date);
 					</div>
 					<div class="panel-body">
 						<div class="site_repot">
-							<p><stong>Attendance: </stong><span>Present: </span> <?php echo 'number present'; ?> -- <span>Absent: </span> <?php echo 'number absent!'; ?>  -- <span>Leave: </span> <?php echo 'number Leave!'; ?> </p><hr>
+							<p><stong>Attendance: </stong><span>Present: </span> <?php echo isset($report->present) ? $report->present : 'No entry yet...' ; ?> -- <span>Absent: </span> <?php echo isset($report->absent) ? $report->absent : 'No entry yet...' ; ?>  -- <span>Leave: </span> <?php echo isset($report->leave) ? $report->leave : 'No entry yet...' ; ?> </p><hr>
 							<p><stong>Gender: </stong><span>Male: </span> <?php echo 'number Male'; ?> -- <span>Female: </span> <?php echo 'number Female!'; ?> </p><hr>
 							<p><stong>New Staff: </stong><span>Male: </span> <?php echo 'number Male'; ?> -- <span>Female: </span> <?php echo 'number Female!'; ?> -- <span>Total: </span> <?php echo 'number Total!'; ?> </p><hr>
 						</div>
@@ -182,126 +187,4 @@ $new_staff_count = Site_staff::count_all_on_date($date);
 			
 		</div><!--/.row-->
 	</div>	<!--/.main-->
-
-
-	<!--/.modal -->
-	<div class="modal fade" id="newEmployee" tabindex="-1" role="dialog" aria-labelledby="newEmployee">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<form action="" id="newStaffForm" enctype="multipart/form-data" method="post">
-					<fieldset>
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="myModalLabel">New Staff</h4>
-						</div>
-						<div class="modal-body">
-							<div id="newStaffStatus"></div>
-							<div id="newStaff"></div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							<button type="submit" name="submit" class="btn btn-primary">Save changes</button>
-						</div>
-					</fieldset>
-				</form>
-			</div>
-		</div>
-	</div>
-
-	<!--/.modal -->
-	<div class="modal fade" id="accident" tabindex="-1" role="dialog" aria-labelledby="accident">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<form action="" id="accidentForm" enctype="multipart/form-data" method="post">
-					<fieldset>
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="myModalLabel">Accident</h4>
-						</div>
-						<div class="modal-body">
-							<div id="accidentStatus"></div>
-							<div id="accidentAjax"></div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							<button type="submit" name="submit" class="btn btn-primary">Save changes</button>
-						</div>
-					</fieldset>
-				</form>
-			</div>
-		</div>
-	</div>
-
-	<!--/.modal -->
-	<div class="modal fade" id="incident" tabindex="-1" role="dialog" aria-labelledby="incident">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<form action="" id="incidentForm" enctype="multipart/form-data" method="post">
-					<fieldset>
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="myModalLabel">Incident Entry</h4>
-						</div>
-						<div class="modal-body">
-							<div id="incidentStatus"></div>
-							<div id="incidentAjax"></div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							<button type="submit" name="submit" class="btn btn-primary">Save changes</button>
-						</div>
-					</fieldset>
-				</form>
-			</div>
-		</div>
-	</div>
-
-	<!--/.modal -->
-	<div class="modal fade" id="cat" tabindex="-1" role="dialog" aria-labelledby="cat">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<form action="" id="catForm" enctype="multipart/form-data" method="post">
-					<fieldset>
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="myModalLabel">Incident Entry</h4>
-						</div>
-						<div class="modal-body">
-							<div id="catStatus"></div>
-							<div id="catAjax"></div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							<button type="submit" name="submit" class="btn btn-primary">Save changes</button>
-						</div>
-					</fieldset>
-				</form>
-			</div>
-		</div>
-	</div>
-
-	<!--/.modal -->
-	<div class="modal fade" id="payment" tabindex="-1" role="dialog" aria-labelledby="payment">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<form action="" id="paymentForm" enctype="multipart/form-data" method="post">
-					<fieldset>
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="myModalLabel">Incident Entry</h4>
-						</div>
-						<div class="modal-body">
-							<div id="paymentStatus"></div>
-							<div id="paymentAjax"></div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							<button type="submit" name="submit" class="btn btn-primary">Save changes</button>
-						</div>
-					</fieldset>
-				</form>
-			</div>
-		</div>
-	</div>
-
 <?php include_layout_template('footer.php'); ?>
