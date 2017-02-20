@@ -41,6 +41,16 @@ class DatabaseObject {
 		// return static::find_by_sql("SELECT * FROM ".static::$table_name." WHERE date = ".$database->escape_value($date));
 
 		$sql = "SELECT * FROM ".static::$table_name." WHERE date = '".$date."'";
+		$result_array = static::find_by_sql($sql);
+		return !empty($result_array) ? array_shift($result_array) : false;
+	}
+
+	// find all with date
+	public static function find_all_for_date($date) {
+		global $database;
+		// return static::find_by_sql("SELECT * FROM ".static::$table_name." WHERE date = ".$database->escape_value($date));
+
+		$sql = "SELECT * FROM ".static::$table_name." WHERE date = '".$date."'";
 		return static::find_by_sql($sql);
 	}
 
