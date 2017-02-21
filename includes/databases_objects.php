@@ -35,14 +35,30 @@ class DatabaseObject {
 		return !empty($result_array) ? array_shift($result_array) : false;
 	}
 
-	// find all with date
-	public static function find_for_date($date) {
+	// find for with date and id
+	public static function find_for_date_id($date, $id) {
 		global $database;
 		// return static::find_by_sql("SELECT * FROM ".static::$table_name." WHERE date = ".$database->escape_value($date));
 
-		$sql = "SELECT * FROM ".static::$table_name." WHERE date = '".$date."'";
+		$sql = "SELECT * FROM ".static::$table_name." WHERE date = '".$date."' AND IMC_staff_id = ".$id;
 		$result_array = static::find_by_sql($sql);
 		return !empty($result_array) ? array_shift($result_array) : false;
+	}
+
+	// find for with date and site
+	public static function find_for_date_site($date, $site) {
+		global $database;
+		// return static::find_by_sql("SELECT * FROM ".static::$table_name." WHERE date = ".$database->escape_value($date));
+
+		$sql = "SELECT * FROM ".static::$table_name." WHERE date = '".$date."' AND site = '".$site."'";
+		$result_array = static::find_by_sql($sql);
+		return !empty($result_array) ? array_shift($result_array) : false;
+	}
+
+	// find all with date only
+	public static function find_for_date($date) {
+		global $database;
+		return static::find_by_sql("SELECT * FROM ".static::$table_name." WHERE date = '".$database->escape_value($date)."'");
 	}
 
 	// find all with date
