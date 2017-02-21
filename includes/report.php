@@ -18,10 +18,13 @@ class Report extends DatabaseObject {
 	public $IMC_staff_id;
 	
 
-	public static function make ($date, $present, $absent, $leave_no, $female, $male, $new, $site_name, $IMC_staff_id) {
+	public static function make ($id, $date, $present, $absent, $leave_no, $female, $male, $new, $site_name, $IMC_staff_id) {
 		$report = new Report;
-
-		$report->id =(INT) 0;
+		if ($id = 0) {
+			$report->id =(INT) 0;	
+		} else {
+			$report->id = $id;
+		}
 		$report->date = $date;
 		$report->present = $present;
 		$report->absent = $absent;
