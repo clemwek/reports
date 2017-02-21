@@ -168,20 +168,35 @@ switch (getMode ()) {
         $female = $_POST['no_of_female'];
         $new = $_POST['no_of_new'];
         $report_coment = $_POST['report_coment'];
-        $date = datetime(time());
+        $date = date_only(time());
         $error = false;
         $error_array = [];
         $site_name = 'test';
-        $IMC_staff_id = 1;
+        $IMC_staff_id = $session->user_id;
+        // make sure there is no entry for before
+        $entry = Report::find_for_date($date, $IMC_staff_id);
+        // isset($entry) ? $id = $entry['id'] : $id =(INT) 0;
 
+        $report = Report::make ($id=0, $date, $present, $absent, $leave_no, $female, $male, $new, $site_name, $IMC_staff_id) ;
 
-        $report = Report::make ($date, $present, $absent, $leave_no, $female, $male, $new, $site_name, $IMC_staff_id) ;
-
-        if ($report && $report->create()) {
-            echo '<div class="alert alert-success" role="alert">Success <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+        // var_dump($entry);
+        if ($entry) {
+            echo '<div class="alert alert-danger" role="alert">You have already made entry <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+            // if ($report && $report->save()) {
+            //     echo '<div class="alert alert-success" role="alert">Update was a success <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+            // } else {
+            //     echo 'There was an error while updating the database!!!';
+            // }
         } else {
-            echo 'There was an error while saving the database!!!';
+            if ($report && $report->save()) {
+                echo '<div class="alert alert-success" role="alert">Data was success <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+            } else {
+                var_dumb($entry);
+                echo 'There was an error while saving the database!!!';
+            }
         }
+
+        
         
 
     break;
