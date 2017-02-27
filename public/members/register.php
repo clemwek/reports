@@ -89,7 +89,6 @@ if (isset($_POST['submit'])) {
 			} else {
 				if ($new_user && $new_user->create()) {  
 					$session->login($new_user);
-					Logins::clog("New Success", $new_user->id);
 					if ($session->usertype == "employee" || $session->usertype == "Employee" ) {
 						redirect_to("personal_details_form.php");
 					} elseif ($session->usertype == "employer" || $session->usertype == "Employer" ) {
@@ -208,7 +207,16 @@ if (isset($_POST['submit'])) {
 										</div>
 										<div class="col-xs-6">
 											<label class="sr-only" for="site">Site: </label>
-											<input type="text" name="site" class="form-control" id="site" placeholder="site..." value="<?php echo isset($site) ? $site: false; ?>" title="Please enter your site."  required>
+											<!--<input type="text" name="site" class="form-control" id="site" placeholder="site..." value="<?php //echo isset($site) ? $site: false; ?>" title="Please enter your site."  required>-->
+											<?php
+											$sites = load_json('../../includes/data.json');
+											$output = '<select name="site" class="form-control" id="site" placeholder="site..." title="Please enter your site."  required>';
+											foreach ($sites['sites'] as $site) {
+												$output .="<option>{$site}</option>";
+											}
+											$output .= '</select>';			
+											print $output;
+											?>
 											<p class="help-text small">Enter the region you are.</p>
 											<span class="error"><?php echo isset($site_error) ? $site_error : false; ?></span>
 										</div>
