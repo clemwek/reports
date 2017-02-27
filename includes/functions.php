@@ -285,7 +285,7 @@ function nationality () {
 function load_json($location) {
   $data_file = $location;
   $data_json = file_get_contents($data_file);
-  $data_array = json_decode($data_json, true);
+  return json_decode($data_json, true);
 }
 
 
