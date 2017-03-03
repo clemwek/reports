@@ -180,7 +180,7 @@ require_once("../../../includes/initialize.php");
 	</div>	<!--/.main-->
 
 
-	<!--/.modal -->
+	<!--/ new staff .modal -->
 	<div class="modal fade" id="newEmployee" tabindex="-1" role="dialog" aria-labelledby="newEmployee">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -252,7 +252,7 @@ require_once("../../../includes/initialize.php");
 		</div>
 	</div>
 
-	<!--/.modal -->
+	<!--/category .modal -->
 	<div class="modal fade" id="cat" tabindex="-1" role="dialog" aria-labelledby="cat">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -265,6 +265,7 @@ require_once("../../../includes/initialize.php");
 						<div class="modal-body">
 							<div id="catStatus"></div>
 							<div id="catAjax"></div>
+							
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
