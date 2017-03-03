@@ -234,7 +234,7 @@ require_once("../../../includes/initialize.php");
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-xs-12">
+			<div class="col-sm-12">
 				<label for="" class="sr-only">Other payment</label>
 				<input type="text" name="other_exp" class="form-control" id="other_exp" placeholder="Describe Other payment" value="" required>
 				<p class="help-text small">Enter description to other payment.</p>
