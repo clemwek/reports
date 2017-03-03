@@ -15,9 +15,7 @@ $date = date_only(time());
 
 //Bring in data from accidents, incidents, new employees not submited reports
 //Bring the data from json
-$data_file = '../../../includes/data.json';
-$data_json = file_get_contents($data_file);
-$data_array = json_decode($data_json, true);
+$data_array = load_json('../../../includes/data.json');
 
 // Read accident data 
 $accident_count = Accident::count_all_on_date($date);
@@ -163,15 +161,17 @@ $report = Report::find_for_date($date);
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h3 class="panel-title">All Site</h3>
-					</div>
-					<div class="panel-body">
-						<div class="site_repot">
-							<p><stong>Attendance: </stong><span>Present: </span> <?php echo isset($report->present) ? $report->present : 'No entry yet...' ; ?> -- <span>Absent: </span> <?php echo isset($report->absent) ? $report->absent : 'No entry yet...' ; ?>  -- <span>Leave: </span> <?php echo isset($report->leave) ? $report->leave : 'No entry yet...' ; ?> </p><hr>
-							<p><stong>Gender: </stong><span>Male: </span> <?php echo isset($report->male) ? $report->male : 'No entry yet...' ; ?> -- <span>Female: </span> <?php echo isset($report->female) ? $report->female : 'No entry yet...' ; ?> </p><hr>
-							<p><stong>New Staff: </stong><span>Male: </span> <?php echo isset($report->new) ? $report->new : 'No entry yet...' ; ?> -- <span>Female: </span> <?php echo 'number Female!'; ?> -- <span>Total: </span> <?php echo 'number Total!'; ?> </p><hr>
+					<div id="loadReport">
+						<div class="panel-heading">
+							<h3 class="panel-title">All Site</h3>
 						</div>
+						<div class="panel-body">
+							<div class="site_repot">
+								<p><stong>Attendance: </stong><span>Present: </span> <?php echo isset($report->present) ? $report->present : 'No entry yet...' ; ?> -- <span>Absent: </span> <?php echo isset($report->absent) ? $report->absent : 'No entry yet...' ; ?>  -- <span>Leave: </span> <?php echo isset($report->leave) ? $report->leave : 'No entry yet...' ; ?> </p><hr>
+								<p><stong>Gender: </stong><span>Male: </span> <?php echo isset($report->male) ? $report->male : 'No entry yet...' ; ?> -- <span>Female: </span> <?php echo isset($report->female) ? $report->female : 'No entry yet...' ; ?> </p><hr>
+								<p><stong>New Staff: </stong><span>Male: </span> <?php echo isset($report->new) ? $report->new : 'No entry yet...' ; ?> -- <span>Female: </span> <?php echo 'number Female!'; ?> -- <span>Total: </span> <?php echo 'number Total!'; ?> </p><hr>
+							</div>
+					</div>
 					</div>
 				</div>
 			</div>
