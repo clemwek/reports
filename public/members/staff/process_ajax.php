@@ -74,7 +74,7 @@ switch (getMode ()) {
         $date = datetime(time());
         $error = false;
         $error_array = [];
-        $site_name = 'test';
+        $site_name = $session->site_name;
 
         //validations
         
@@ -82,9 +82,9 @@ switch (getMode ()) {
         //proccess/ save to the db
         if ($error === false) {
             $dosh_id = 1; 
-            $accident = Accident::make ($date, $staff_id, $site_name, $dosh_id, $nature_of_injury, $body_part_injury, $extent_of_injury, $description, $first_aid, $hospital, $first_aid_explain, $hospital_explain, $coment);
+            $accident = Accident::make ($id =(INT) 0, $date, $staff_id, $site_name, $dosh_id, $nature_of_injury, $body_part_injury, $extent_of_injury, $description, $first_aid, $hospital, $first_aid_explain, $hospital_explain, $coment);
 
-            if ($accident && $accident->create()) {
+            if ($accident && $accident->save()) {
                 echo '<div class="alert alert-success" role="alert">Success <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
             } else {
                 echo 'There was an error while saving the database!!!';
@@ -100,15 +100,15 @@ switch (getMode ()) {
         $date = datetime(time());
         $error = false;
         $error_array = [];
-        $site_name = 'test';
+        $site_name = $session->site_name;
 
         //validations
 
         //proccess/ save to the db
         if ($error == false) {
-            $incident = Incident::make ($date, $site_name, $what, $description, $time);
+            $incident = Incident::make ($id =(INT) 0, $date, $site_name, $what, $description, $time);
 
-            if ($incident && $incident->create()) {
+            if ($incident && $incident->save()) {
                 echo '<div class="alert alert-success" role="alert">Success <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
             } else {
                 echo 'There was an error while saving the database!!!';
@@ -150,15 +150,15 @@ switch (getMode ()) {
         $date = datetime(time());
         $error = false;
         $error_array = [];
-        $site_name = 'test';
+        $site_name = $session->site_name;
 
         //validations
 
         //proccess/ save to the db
         if ($error == false) {
-            $payment = Payment::make ($date, $site_name, $type, $amount, $nhif, $nssf, $other, $other_exp);
+            $payment = Payment::make ($id =(INT) 0, $date, $site_name, $type, $amount, $nhif, $nssf, $other, $other_exp);
 
-            if ($payment && $payment->create()) {
+            if ($payment && $payment->save()) {
                 echo '<div class="alert alert-success" role="alert">Success <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
             } else {
                 echo 'There was an error while saving the database!!!';
