@@ -9,6 +9,7 @@ class Session {
 	private $logged_in=false;
 	public  $user_id;
 	public 	$usertype;
+	public 	$site_name;
 	public 	$message;
 
 	function __construct() {
@@ -31,6 +32,7 @@ class Session {
 		if ($user) {
 			$this->user_id = $_SESSION['user_id'] = $user->id;
 			$this->usertype = $_SESSION['usertype'] = $user->type;
+			$this->site_name = $_SESSION['site_name'] = $user->site_name;
 			$this->logged_in = true;
 		}
 	}
@@ -39,7 +41,7 @@ class Session {
 		if (isset($_SESSION['user_id'])) {
 			$this->user_id = $_SESSION['user_id'];
 			$this->usertype = $_SESSION['usertype'];
-			$this->usertype = $_SESSION['site_name'];
+			$this->site_name = $_SESSION['site_name'];
 			$this->logged_in = true;
 		} else {
 			unset($this->user_id);
@@ -53,6 +55,8 @@ class Session {
 		unset($this->user_id);
 		unset($_SESSION['usertype']);
 		unset($this->usertype);
+		unset($_SESSION['site_name']);
+		unset($this->site_name);
 		session_destroy();
 		$this->logged_in = false;
 	}
