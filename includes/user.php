@@ -76,6 +76,16 @@ class User extends DatabaseObject {
 		return !empty($result_array) ? true : false ;
 	}
 
+	public static function id_exists($id_number) {
+		global $database;
+		$email = $database->escape_value($id_number);
+
+		$sql  = "SELECT * FROM users ";
+		$sql .= "WHERE id_number = '{$id_number}' ";
+		$result_array = self::find_by_sql($sql);
+		return !empty($result_array) ? true : false ;
+	}
+
 	public function full_name() {
 			if (isset($this->first_name) && isset($this->last_name))
 				return $this->first_name . " " . $this->last_name;
