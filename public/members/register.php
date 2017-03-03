@@ -195,9 +195,9 @@ if (isset($_POST['submit'])) {
 									<div class="input-group">
 										<div class="col-xs-6">
 											<label class="sr-only" for="id">Id: </label>
-											<input type="text" name="id" class="form-control" id="id" placeholder="ID..." value="<?php echo isset($id) ? $id: false; ?>" title="Please enter your id."  required>
+											<input type="text" name="id" class="form-control" id="id" placeholder="ID..." value="<?php echo isset($id_number) ? $id_number: false; ?>" title="Please enter your id."  required>
 											<p class="help-text small">Enter your id you are.</p>
-											<span class="error"><?php echo isset($id_error) ? $id_error : false; ?></span>
+											<span class="error"><?php echo isset($id_number_error) ? $id_error : false; ?></span>
 										</div>
 										<div class="col-xs-6">
 											<label class="sr-only" for="site">Site: </label>
