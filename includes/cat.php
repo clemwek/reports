@@ -13,11 +13,11 @@ class Cat extends DatabaseObject {
 	public $number;
 	
 
-	public static function make ($date, $site_name, $name, $number) {
+	public static function make ($id, $date, $site_name, $name, $number) {
 		$cat = new Cat;
 
 		//pass the variables
-		$cat->id = (INT) 0;
+		$cat->id = (INT) $id;
 		$cat->date = $date;
 		$cat->site_name = $site_name;
 		$cat->name = $name;
