@@ -22,10 +22,10 @@ class Accident extends DatabaseObject {
 	public $coment;
 	
 
-	public static function make ($date, $staff_id, $site_name, $dosh_id, $nature_of_injury, $body_part_injury, $extent_of_injury, $description, $first_aid, $hospital, $first_aid_explain, $hospital_explain, $coment) {
+	public static function make ($id, $date, $staff_id, $site_name, $dosh_id, $nature_of_injury, $body_part_injury, $extent_of_injury, $description, $first_aid, $hospital, $first_aid_explain, $hospital_explain, $coment) {
 		$accident = new Accident;
 
-		$accident->id =(INT) 0;
+		$accident->id =(INT) $id;
 		$accident->date = $date;
 		$accident->staff_id = $staff_id;
 		$accident->site_name = $site_name;
