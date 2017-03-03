@@ -16,10 +16,10 @@ class Site_staff extends DatabaseObject {
 	
 
 
-	public static function make ($date, $site_name, $first_name, $last_name, $id_number, $phone_number) {
+	public static function make ($id, $date, $site_name, $first_name, $last_name, $id_number, $phone_number) {
 		$site_staff = new Site_staff;
 
-		$site_staff->id =(INT) 0;
+		$site_staff->id =(INT) $id;
 		$site_staff->date = $date;
 		$site_staff->site_name = $site_name;
 		$site_staff->first_name = $first_name;
