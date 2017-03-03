@@ -1,3 +1,8 @@
+<?php
+require_once("../../../includes/initialize.php");
+//if (!$session->is_logged_in()) { redirect_to("login.php");}
+?>
+
 <section id="new_staff">
     <div class="form-group">
 		<div class="control-label">
@@ -158,25 +163,29 @@
 			</div>
 			<div class="col-xs-6">
 				<label for="" class="sr-only">Select the category:</label>
-				<select class="btn-block form-control" name="emp_cat" id="emp_cat">
+				<select class="btn-block form-control" name="emp_cat" id="emp_cat" required>
 					<option>Select the category:</option>
-					<option>Machine Attendant</option>
-					<option>Machine Operator</option>
-					<option>Cleaners</option>
-					<option>Others</option>
+					<?php
+					$cats = load_json('../../../includes/data.json');
+					$output = "";
+					foreach ($cats['categories'] as $cat) {
+						$output .= "<option>{$cat}</option>";
+					}
+					echo $output;
+					?>
 				</select>
 				<p class="help-text small">job category of the employee.</p>
 				<span class="error"><?php echo isset($emp_cat_error) ? $emp_cat_error : false; ?></span>
 			</div>
 			<div class="col-xs-6">
 				<label for="" class="sr-only">Number Of employees.</label>
-				<input type="number" name="no_emp_cat" class="form-control" id="no_emp_cat" placeholder="Number Of employees." value="">
+				<input type="number" name="no_emp_cat" class="form-control" id="no_emp_cat" placeholder="Number Of employees." value="" required>
 				<p class="help-text small">Number Of employees..</p>
 				<span class="error"><?php echo isset($no_emp_cat_error) ? $no_emp_cat_error : false; ?></span>
 			</div>
-			<div class="col-xs-12">
+			<!--<div class="col-xs-12">
 				<button class="btn btn-success glyphicon glyphicon-plus" id="add_emp_cat">Add another category</button>
-			</div>
+			</div>-->
 		</div>
 	</div>
 </section>
@@ -201,25 +210,25 @@
 			</div>
 			<div class="col-xs-3">
 				<label for="" class="sr-only">Amount paid</label>
-				<input type="number" name="amount_payment" class="form-control" id="amount_payment" placeholder="Amount paid" value="">
+				<input type="number" name="amount_payment" class="form-control" id="amount_payment" placeholder="Amount paid" value="" required>
 				<p class="help-text small">Amount paid.</p>
 				<span class="error"><?php echo isset($amount_payment_error) ? $amount_payment_error : false; ?></span>
 			</div>
 			<div class="col-xs-2">
 				<label for="" class="sr-only">NHIF </label>
-				<input type="number" name="nhif_payment" class="form-control" id="nhif_payment" placeholder="NHIF" value="">
+				<input type="number" name="nhif_payment" class="form-control" id="nhif_payment" placeholder="NHIF" value="" required>
 				<p class="help-text small">Enter amount paid for NHIF.</p>
 				<span class="error"><?php echo isset($nhif_payment_error) ? $nhif_payment_error : false; ?></span>
 			</div>
 			<div class="col-xs-2">
 				<label for="" class="sr-only">NSSF payment</label>
-				<input type="number" name="nssf_payment" class="form-control" id="nssf_payment" placeholder="NSSF" value="">
+				<input type="number" name="nssf_payment" class="form-control" id="nssf_payment" placeholder="NSSF" value="" required>
 				<p class="help-text small">Enter NSSF payment.</p>
 				<span class="error"><?php echo isset($nssf_payment_error) ? $nssf_payment_error : false; ?></span>
 			</div>
 			<div class="col-xs-2">
 				<label for="" class="sr-only">Other payment</label>
-				<input type="number" name="other_payment" class="form-control" id="other_payment" placeholder="Other payment" value="">
+				<input type="number" name="other_payment" class="form-control" id="other_payment" placeholder="Other payment" value="" required>
 				<p class="help-text small">Enter other payment.</p>
 				<span class="error"><?php echo isset($other_payment_error) ? $other_payment_error : false; ?></span>
 			</div>
@@ -227,7 +236,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<label for="" class="sr-only">Other payment</label>
-				<input type="text" name="other_exp" class="form-control" id="other_exp" placeholder="Describe Other payment" value="">
+				<input type="text" name="other_exp" class="form-control" id="other_exp" placeholder="Describe Other payment" value="" required>
 				<p class="help-text small">Enter description to other payment.</p>
 				<span class="error"><?php echo isset($other_payment_error) ? $other_payment_error : false; ?></span>
 			</div>
