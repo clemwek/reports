@@ -17,10 +17,10 @@ class Payment extends DatabaseObject {
 	public $other_exp;
 	
 
-	public static function make ($date, $site_name, $type, $amount, $nhif, $nssf, $other, $other_exp) {
+	public static function make ($id, $date, $site_name, $type, $amount, $nhif, $nssf, $other, $other_exp) {
 		$payment = new Payment;
 
-		$payment->id = (InT) 0;
+		$payment->id = (INT) $id;
 		$payment->date = $date;
 		$payment->site_name = $site_name;
 		$payment->type = $type;
