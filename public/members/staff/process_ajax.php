@@ -178,7 +178,7 @@ switch (getMode ()) {
         $date = date_only(time());
         $error = false;
         $error_array = [];
-        $site_name = 'test';
+        $site_name = $session->site_name;
         $IMC_staff_id = $session->user_id;
         // make sure there is no entry for before
         $entry = Report::find_for_date($date, $IMC_staff_id);
@@ -196,9 +196,8 @@ switch (getMode ()) {
             // }
         } else {
             if ($report && $report->save()) {
-                echo '<div class="alert alert-success" role="alert">Data was success <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+                echo '<div class="alert alert-success" role="alert">Data save was success <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
             } else {
-                var_dumb($entry);
                 echo 'There was an error while saving the database!!!';
             }
         }
