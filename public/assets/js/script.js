@@ -16,11 +16,10 @@ $('document').ready(function() {
             type: 'POST',
             data: data,
              success: function (data) {
-                 $('#newStaffStatus').html(data);
-                 $('#newStaff').load('modal_forms.php#new_staff');
+                $('#newStaffStatus').html(data);
+                $('#newStaff').load('modal_forms.php #new_staff');
              }
         });
-        //alert('This works!');
     });
 
     //ajax for accident for ajax
@@ -119,33 +118,40 @@ $('document').ready(function() {
 });
 
 function loadNewStaffForm() {
-    $('#bNewStaff').on('click', function () {
-        //alert ('Working');
+    $('#bNewStaff').on('click', function (event) {
+        event.preventDefault();
         $('#newStaff').load('modal_forms.php #new_staff');
     });
 }
 
 function loadAccidentForm() {
-    $('#bAccident').on('click', function () {
-        //alert ('Working');
+    $('#bAccident').on('click', function (event) {
+        event.preventDefault();
         $('#accidentAjax').load('modal_forms.php #accident_load');
     });
 }
 
 function loadIncidentForm() {
-    $('#bIncident').on('click', function () {
+    $('#bIncident').on('click', function (event) {
+        event.preventDefault();
         $('#incidentAjax').load('modal_forms.php #incident_load');
     });
 }
 
 function loadCatForm() {
-    $('#bAddCat').on('click', function () {
+    $('#bAddCat').on('click', function (event) {
+        event.preventDefault();
         $('#catAjax').load('modal_forms.php #cat_load');
     });
 }
 
 function loadPaymentForm() {
-    $('#bAddPayment').on('click', function () {
+    $('#bAddPayment').on('click', function (event) {
+        event.preventDefault();
         $('#paymentAjax').load('modal_forms.php #payment_load');
     });
 }
+
+// function loadReport () {
+//     $("#loadReport").load('process_ajax.php');
+// }
