@@ -105,7 +105,7 @@ require_once("../../../includes/initialize.php");
 									</div>
 					                <div class="col-xs-6">
 					                    <label for="" class="sr-only">Number Of new employees</label>
-					                    <input type="number" name="no_of_new" class="form-control" id="no_of_new" placeholder="New" value="">
+					                    <input type="number" name="no_of_new" class="form-control" id="no_of_new" placeholder="New" value="" >
 					                    <p class="help-text small">Number Of new employees.</p>
 					                    <span class="error"><?php echo isset($no_of_new_error) ? $no_of_new_error : false; ?></span>
 					                </div>
@@ -150,7 +150,7 @@ require_once("../../../includes/initialize.php");
 									<div class="row">
 										<div class="col-xs-12">
 											<label for="" class="sr-only">Coments</label>
-											<textarea name="report_coment" class="btn-block" type="button" placeholder="coments..." ></textarea>
+											<textarea name="report_coment" class="btn-block" type="button" placeholder="coments..."></textarea>
 											<p class="help-text small">Coments.</p>
 											<span class="error"><?php echo isset($pod_error) ? $pod_error : false; ?></span>
 										</div>
