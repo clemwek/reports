@@ -39,6 +39,7 @@ class Session {
 		if (isset($_SESSION['user_id'])) {
 			$this->user_id = $_SESSION['user_id'];
 			$this->usertype = $_SESSION['usertype'];
+			$this->usertype = $_SESSION['site_name'];
 			$this->logged_in = true;
 		} else {
 			unset($this->user_id);
