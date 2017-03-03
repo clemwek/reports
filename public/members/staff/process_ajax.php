@@ -52,8 +52,10 @@ switch (getMode ()) {
             if ($new_staff && $new_staff->save()) {
                 echo '<div class="alert alert-success" role="alert">Success <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
             } else {
-                echo 'There was an error while saving the database!!!';
+                echo '<div class="alert alert-danger" role="alert">There was an error while saving the database!!! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
             }
+        } else {
+            echo '<div class="alert alert-danger" role="alert">Error with the in put data!!! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
         }
     break;
         
@@ -121,15 +123,15 @@ switch (getMode ()) {
         $date = datetime(time());
         $error = false;
         $error_array = [];
-        $site_name = 'test';
+        $site_name = $session->site_name;
 
         //validations
 
         //proccess/ save to the db
         if ($error == false) {
-            $cat = Cat::make ($date, $site_name, $name, $number);
+            $cat = Cat::make ($id =(INT) 0, $date, $site_name, $name, $number);
 
-            if ($cat && $cat->create()) {
+            if ($cat && $cat->save()) {
                 echo '<div class="alert alert-success" role="alert">Success <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
             } else {
                 echo 'There was an error while saving the database!!!';
