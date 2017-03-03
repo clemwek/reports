@@ -76,29 +76,23 @@ if (isset($_POST['submit'])) {
 			$id_error = 'ID is empty, Please fill';
 			$error = true;
 		}
-
 		if ($error === false) {
-			$new_user = User::make($fname, $lname, $uname, $pword, $pnumber, $id_number, $email, $site, $type);
-
 			$user = new User;
 			//confirm there are no previous entries
 			if($user->username_exists($uname)) {
 				$message = "try another username, this is already taken!";
 			} else if ($user->email_exists($email)) {
 				$message = "try another email id, this is already taken !";
+			} elseif ($user->id_exists($id_number)) {
+				$message = 'Make sure its your id!';
 			} else {
+				$new_user = User::make($fname, $lname, $uname, $pword, $pnumber, $id_number, $email, $site, $type);
 				if ($new_user && $new_user->create()) {  
 					$session->login($new_user);
-					if ($session->usertype == "employee" || $session->usertype == "Employee" ) {
-						redirect_to("personal_details_form.php");
-					} elseif ($session->usertype == "employer" || $session->usertype == "Employer" ) {
-						redirect_to("employers/profile.php");
-					}
 					$session->user_redirect($session->usertype);     
 				}
 			}
 		}
-		
 	}
 } else {
 	$fname = "";
