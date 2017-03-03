@@ -14,10 +14,10 @@ class Incident extends DatabaseObject {
     public $time;
 	
 
-	public static function make ($date, $site_name, $what, $description, $time) {
+	public static function make ($id, $date, $site_name, $what, $description, $time) {
 		$incident = new Incident;
 
-		$incident->id = (INT) 0;
+		$incident->id = (INT) $id;
 		$incident->date = $date;
 		$incident->site_name = $site_name;
 		$incident->what = $what;
