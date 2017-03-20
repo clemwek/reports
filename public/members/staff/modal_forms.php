@@ -38,6 +38,18 @@ require_once("../../../includes/initialize.php");
 				<p class="help-text small">Enter your phone number.</p>
 				<span class="error"></span>
 			</div>
+			<div class="col-xs-6">
+				<label for="nhif_number" class="sr-only">NHIF Number</label>
+				<input type="text" name="nhif_number" class="form-control" id="nhif_number" placeholder="NHIF number..." value="" required>
+				<p class="help-text small">Enter staff NHIF number.</p>
+				<span class="error"></span>
+			</div>
+	    	<div class="col-xs-6">
+				<label for="kre_number" class="sr-only">KRA number</label>
+				<input type="text" name="kre_number" class="form-control" id="kre_number" placeholder="kra number..." value="" required>
+				<p class="help-text small">Enter staff kra number.</p>
+				<span class="error"></span>
+			</div>
 		</div>		
 	</div>
 </section>
@@ -196,48 +208,78 @@ require_once("../../../includes/initialize.php");
 			<div class="control-label">
 				<label for="" class="control-label"> Payment: </label>
 			</div>
-			<div class="col-xs-3">
-				<label for="" class="sr-only">Select type of payment</label>
-				<select class="btn-block form-control" name="payment_name" id="payment_name" required>
-					<option>Type of payment:</option>
-					<option>Wages</option>
-					<option>Allowance</option>
-					<option>Salaries</option>
-					<option>Others</option>
+			<div class="col-xs-4">
+				<label for="department_name" class="sr-only">Select department</label>
+				<select class="btn-block form-control" name="department_name" id="department_name" required>
+					<option>List of departments:</option>
+					<option>Engineering</option>
+					<option>Administration</option>
+					<option>Finance</option>
+					<option>Casual</option>
 				</select>
-				<p class="help-text small">Number Of male employees.</p>
+				<p class="help-text small">Choose the department.</p>
 				<span class="error"><?php echo isset($pod_error) ? $pod_error : false; ?></span>
 			</div>
-			<div class="col-xs-3">
-				<label for="" class="sr-only">Amount paid</label>
-				<input type="number" name="amount_payment" class="form-control" id="amount_payment" placeholder="Amount paid" value="" required>
-				<p class="help-text small">Amount paid.</p>
+			<div class="col-xs-2">
+				<label for="invoice_amount" class="sr-only">Invoiced Amount</label>
+				<input type="number" name="invoice_amount" class="form-control" id="invoice_amount" placeholder="invoice amount" value="" required>
+				<p class="help-text small">Invoiced amount.</p>
 				<span class="error"><?php echo isset($amount_payment_error) ? $amount_payment_error : false; ?></span>
 			</div>
 			<div class="col-xs-2">
-				<label for="" class="sr-only">NHIF </label>
-				<input type="number" name="nhif_payment" class="form-control" id="nhif_payment" placeholder="NHIF" value="" required>
-				<p class="help-text small">Enter amount paid for NHIF.</p>
+				<label for="basic_salary" class="sr-only">Basic Salary </label>
+				<input type="number" name="basic_salary" class="form-control" id="basic_salary" placeholder="Basic Salary" value="" required>
+				<p class="help-text small">Enter amount paid for basic salary.</p>
 				<span class="error"><?php echo isset($nhif_payment_error) ? $nhif_payment_error : false; ?></span>
 			</div>
 			<div class="col-xs-2">
-				<label for="" class="sr-only">NSSF payment</label>
-				<input type="number" name="nssf_payment" class="form-control" id="nssf_payment" placeholder="NSSF" value="" required>
-				<p class="help-text small">Enter NSSF payment.</p>
+				<label for="house_allowence" class="sr-only">House allowence</label>
+				<input type="number" name="house_allowence" class="form-control" id="house_allowence" placeholder="house allowence" value="" required>
+				<p class="help-text small">Enter amount paid for house allowence.</p>
 				<span class="error"><?php echo isset($nssf_payment_error) ? $nssf_payment_error : false; ?></span>
 			</div>
 			<div class="col-xs-2">
-				<label for="" class="sr-only">Other payment</label>
-				<input type="number" name="other_payment" class="form-control" id="other_payment" placeholder="Other payment" value="" required>
-				<p class="help-text small">Enter other payment.</p>
+				<label for="advence" class="sr-only">Advence</label>
+				<input type="number" name="advence" class="form-control" id="advence" placeholder="Advence" value="" required>
+				<p class="help-text small">Enter amount paid for advence.</p>
 				<span class="error"><?php echo isset($other_payment_error) ? $other_payment_error : false; ?></span>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-12">
-				<label for="" class="sr-only">Other payment</label>
-				<input type="text" name="other_exp" class="form-control" id="other_exp" placeholder="Describe Other payment" value="" required>
-				<p class="help-text small">Enter description to other payment.</p>
+		
+			<div class="col-xs-3">
+				<label for="ot1" class="sr-only">OT 1</label>
+				<input type="number" name="ot1" class="form-control" id="ot1" placeholder="ot1" value="" required>
+				<p class="help-text small">Enter number of hours for OT.</p>
+				<span class="error"><?php echo isset($nssf_payment_error) ? $nssf_payment_error : false; ?></span>
+			</div>
+			<div class="col-xs-3">
+				<label for="ot1_amount" class="sr-only">OT 1 Amount</label>
+				<input type="number" name="ot1_amount" class="form-control" id="ot1_amount" placeholder="ot1_amount" value="" required>
+				<p class="help-text small">Enter amount for hours for OT.</p>
+				<span class="error"><?php echo isset($nssf_payment_error) ? $nssf_payment_error : false; ?></span>
+			</div>
+			<div class="col-xs-3">
+				<label for="ot2" class="sr-only">OT 2</label>
+				<input type="number" name="ot2" class="form-control" id="ot2" placeholder="ot2" value="" required>
+				<p class="help-text small">Enter number of hours for OT 2.</p>
+				<span class="error"><?php echo isset($nssf_payment_error) ? $nssf_payment_error : false; ?></span>
+			</div>
+			<div class="col-xs-3">
+				<label for="ot2_amount" class="sr-only">OT 2 Amount</label>
+				<input type="number" name="ot2_amount" class="form-control" id="ot2_amount" placeholder="ot2_amount" value="" required>
+				<p class="help-text small">Enter amount for hours for OT 2.</p>
+				<span class="error"><?php echo isset($nssf_payment_error) ? $nssf_payment_error : false; ?></span>
+			</div>
+		
+			<div class="col-xs-6">
+				<label for="days_absent" class="sr-only">Days Absent</label>
+				<input type="number" name="days_absent" class="form-control" id="days_absent" placeholder="days absent" value="" required>
+				<p class="help-text small">Enter the number of days absent.</p>
+				<span class="error"><?php echo isset($other_payment_error) ? $other_payment_error : false; ?></span>
+			</div>
+			<div class="col-xs-6">
+				<label for="number_of_staff" class="sr-only">Number Of Staff</label>
+				<input type="number" name="number_of_staff" class="form-control" id="number_of_staff" placeholder="number of staff" value="" required>
+				<p class="help-text small">Enter the number of staff.</p>
 				<span class="error"><?php echo isset($other_payment_error) ? $other_payment_error : false; ?></span>
 			</div>
 		</div>
