@@ -18,6 +18,8 @@ switch (getMode ()) {
         $lastName = $_POST['last_name'];
         $id_number = $_POST['national_id'];
         $phone_number = $_POST['staff_phone_number'];
+        $nhif_number = $_POST['nhif_number'];
+        $kra_number = $_POST['kra_number'];
         $date = datetime(time());
         $error = false;
         $error_array = [];
@@ -47,7 +49,7 @@ switch (getMode ()) {
 
         //proccess/ save to the db
         if ($error === false) {
-            $new_staff = Site_staff::make ($id =(INT) 0, $date,$site_name, $firstName, $lastName, $id_number, $phone_number);
+            $new_staff = Site_staff::make ($id =(INT) 0, $date,$site_name, $firstName, $lastName, $id_number, $phone_number, $nhif_number, $kra_number);
 
             if ($new_staff && $new_staff->save()) {
                 echo '<div class="alert alert-success" role="alert">Success <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
@@ -141,12 +143,17 @@ switch (getMode ()) {
 
     case 'payment':
         //get variables
-        $type = $_POST['payment_name'];
-        $amount = $_POST['amount_payment'];
-        $nhif = $_POST['nhif_payment'];
-        $nssf = $_POST['nssf_payment'];
-        $other = $_POST['other_payment'];
-        $other_exp = $_POST['other_exp'];
+        $department = $_POST['department_name'];
+        $invoiced_amount = $_POST['invoice_amount'];
+        $basic_salary = $_POST['basic_salary'];
+        $house_allawance = $_POST['house_allowence'];
+        $advance = $_POST['advence'];
+        $OT1hours = $_POST['ot1'];
+        $OT1amount = $_POST['ot1_amount'];
+        $OT2hours = $_POST['ot2'];
+        $OT2amount = $_POST['ot2_amount'];
+        $absent_days = $_POST['days_absent'];
+        $number_of_staff = $_POST['number_of_staff'];
         $date = datetime(time());
         $error = false;
         $error_array = [];
@@ -156,7 +163,7 @@ switch (getMode ()) {
 
         //proccess/ save to the db
         if ($error == false) {
-            $payment = Payment::make ($id =(INT) 0, $date, $site_name, $type, $amount, $nhif, $nssf, $other, $other_exp);
+            $payment = Payment_site::make ($id=(INT) 0, $date, $site_name, $department, $invoiced_amount, $basic_salary, $house_allawance, $advance, $OT1hours, $OT1amount, $OT2hours, $OT2amount, $absent_days, $number_of_staff);
 
             if ($payment && $payment->save()) {
                 echo '<div class="alert alert-success" role="alert">Success <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
