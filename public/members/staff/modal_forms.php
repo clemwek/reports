@@ -45,8 +45,8 @@ require_once("../../../includes/initialize.php");
 				<span class="error"></span>
 			</div>
 	    	<div class="col-xs-6">
-				<label for="kre_number" class="sr-only">KRA number</label>
-				<input type="text" name="kre_number" class="form-control" id="kre_number" placeholder="kra number..." value="" required>
+				<label for="kra_number" class="sr-only">KRA number</label>
+				<input type="text" name="kra_number" class="form-control" id="kra_number" placeholder="kra number..." value="" required>
 				<p class="help-text small">Enter staff kra number.</p>
 				<span class="error"></span>
 			</div>
