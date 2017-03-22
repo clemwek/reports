@@ -38,16 +38,29 @@ require_once("../../../includes/initialize.php");
 				<p class="help-text small">Enter your phone number.</p>
 				<span class="error"></span>
 			</div>
-			<div class="col-xs-6">
+			<div class="col-xs-4">
 				<label for="nhif_number" class="sr-only">NHIF Number</label>
 				<input type="text" name="nhif_number" class="form-control" id="nhif_number" placeholder="NHIF number..." value="" required>
 				<p class="help-text small">Enter staff NHIF number.</p>
 				<span class="error"></span>
 			</div>
-	    	<div class="col-xs-6">
+			<div class="col-xs-4">
+				<label for="nssf_number" class="sr-only">NSSF Number</label>
+				<input type="text" name="nssf_number" class="form-control" id="nssf_number" placeholder="NSSF number..." value="" required>
+				<p class="help-text small">Enter staff NSSF number.</p>
+				<span class="error"></span>
+			</div>
+	    	<div class="col-xs-4">
 				<label for="kra_number" class="sr-only">KRA number</label>
 				<input type="text" name="kra_number" class="form-control" id="kra_number" placeholder="kra number..." value="" required>
 				<p class="help-text small">Enter staff kra number.</p>
+				<span class="error"></span>
+			</div>
+			
+	    	<div class="col-xs-12">
+				<label for="bank_account" class="sr-only">bank account</label>
+				<input type="text" name="bank_account" class="form-control" id="bank_account" placeholder="bank account..." value="" required>
+				<p class="help-text small">Enter the bank account number.</p>
 				<span class="error"></span>
 			</div>
 		</div>		

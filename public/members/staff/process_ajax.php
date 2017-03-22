@@ -18,8 +18,10 @@ switch (getMode ()) {
         $lastName = $_POST['last_name'];
         $id_number = $_POST['national_id'];
         $phone_number = $_POST['staff_phone_number'];
+        $nssf_number = $_POST['nssf_number'];
         $nhif_number = $_POST['nhif_number'];
         $kra_number = $_POST['kra_number'];
+        $bank_account = $_POST['bank_account'];
         $date = datetime(time());
         $error = false;
         $error_array = [];
@@ -49,7 +51,7 @@ switch (getMode ()) {
 
         //proccess/ save to the db
         if ($error === false) {
-            $new_staff = Site_staff::make ($id =(INT) 0, $date,$site_name, $firstName, $lastName, $id_number, $phone_number, $nhif_number, $kra_number);
+            $new_staff = Site_staff::make ($id =(INT) 0, $date,$site_name, $firstName, $lastName, $id_number, $phone_number, $nssf_number, $nhif_number, $kra_number, $bank_account);
 
             if ($new_staff && $new_staff->save()) {
                 echo '<div class="alert alert-success" role="alert">Success <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
