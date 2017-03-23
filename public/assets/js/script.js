@@ -24,6 +24,23 @@ $('document').ready(function() {
         });
     });
 
+    $('#addCatForm').on('submit', function(event) {
+        event.preventDefault();
+
+        var mode = 'addCat';
+        var data = $('#addCatForm').serialize()+'&mode='+mode;
+        // alert('this is working');
+        $.ajax ({
+            url: 'process_ajax.php',
+            type: 'POST',
+            data: data,
+            success: function(data) {
+                $('#addCatStatus').html(data);
+                $('#addCatAjax').load('modal_forms.php #addCat_load');
+            }
+        });
+    });
+
     $('#newStaffForm').on('submit', function (event) {
         event.preventDefault();//prevent form submit
         //set up variables
