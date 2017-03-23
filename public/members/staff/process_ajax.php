@@ -1,5 +1,6 @@
 <?php
 require_once('../../../includes/initialize.php');
+$location = '../../../includes/data.json';
 
 function getMode () {
     if (isset ($_POST)) {
@@ -12,6 +13,40 @@ function getMode () {
 
 
 switch (getMode ()) {
+    case 'addCat':
+        $cat = $_POST['category'];
+        
+        $arrays = load_json($location);
+        $array = $arrays['categories'][$session->site_name];
+        if (in_array($cat, $array)) {
+            echo '<div class="alert alert-danger" role="alert">The department is already added! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+        } else {
+            $arrays['categories'][$session->site_name][] = $cat;
+            if (save_json($location, $arrays)) {
+                echo '<div class="alert alert-success" role="alert">The department is added! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+            }
+        }
+    break;
+
+    case 'addDepartment':
+        $department = $_POST['department'];
+
+        $arrays = load_json($location);
+        $array = $arrays['departments'][$session->site_name];
+        if (in_array($department, $array)) {
+            echo '<div class="alert alert-danger" role="alert">The department is already added! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+        } else {
+            $arrays['departments'][$session->site_name][] = $department;
+            if (save_json($location, $arrays)) {
+                echo '<div class="alert alert-success" role="alert">The department is added! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+            }
+        }
+        
+        
+
+    break;
+
+
     case 'new_staff':
         //get variables
         $firstName = $_POST['first_name'];
