@@ -2,6 +2,9 @@
 require_once("../../../includes/initialize.php");
 //if (!$session->is_logged_in()) { redirect_to("login.php");}
 ?>
+<?php
+$location = '../../../includes/data.json';
+?>
 
 <section id="new_staff">
     <div class="form-group">
@@ -206,6 +209,74 @@ require_once("../../../includes/initialize.php");
 				<label for="" class="sr-only">Number Of employees.</label>
 				<input type="number" name="no_emp_cat" class="form-control" id="no_emp_cat" placeholder="Number Of employees." value="" required>
 				<p class="help-text small">Number Of employees..</p>
+				<span class="error"><?php echo isset($no_emp_cat_error) ? $no_emp_cat_error : false; ?></span>
+			</div>
+			<!--<div class="col-xs-12">
+				<button class="btn btn-success glyphicon glyphicon-plus" id="add_emp_cat">Add another category</button>
+			</div>-->
+		</div>
+	</div>
+</section>
+
+<section id="dep_load">
+	<div class="row">
+		<div class="form-group">
+			<div class="control-label">
+				<label for="" class="control-label"> Department: </label>
+			</div>
+			<div class="col-xs-6">
+				<?php 
+					$array = load_json($location);
+					
+					if ($array['departments'][$session->site_name]) {
+						echo '<h4>Already added deps</h4>';
+						foreach ($array['departments'][$session->site_name] as $dep) {
+							echo '<li>'.$dep.'</li>';
+						}
+					} else {
+						echo 'No department is added!';
+					}
+					
+				?>
+			</div>
+			<div class="col-xs-6">
+				<label for="" class="sr-only">Name of the department.</label>
+				<input type="text" name="department" class="form-control" id="department" placeholder="Departmant." value="" required>
+				<p class="help-text small">Enter the name of the department.</p>
+				<span class="error"><?php echo isset($no_emp_cat_error) ? $no_emp_cat_error : false; ?></span>
+			</div>
+			<!--<div class="col-xs-12">
+				<button class="btn btn-success glyphicon glyphicon-plus" id="add_emp_cat">Add another category</button>
+			</div>-->
+		</div>
+	</div>
+</section>
+
+<section id="addCat_load">
+	<div class="row">
+		<div class="form-group">
+			<div class="control-label">
+				<label for="" class="control-label"> Category: </label>
+			</div>
+			<div class="col-xs-6">
+				<?php 
+					$array = load_json($location);
+					
+					if ($array['categories'][$session->site_name]) {
+						echo '<h4>Already added deps</h4>';
+						foreach ($array['departments'][$session->site_name] as $dep) {
+							echo '<li>'.$dep.'</li>';
+						}
+					} else {
+						echo 'No Categories is added!';
+					}
+					
+				?>
+			</div>
+			<div class="col-xs-6">
+				<label for="" class="sr-only">Name of the categoty.</label>
+				<input type="text" name="category" class="form-control" id="category" placeholder="Category." value="" required>
+				<p class="help-text small">Enter the name of the category.</p>
 				<span class="error"><?php echo isset($no_emp_cat_error) ? $no_emp_cat_error : false; ?></span>
 			</div>
 			<!--<div class="col-xs-12">
