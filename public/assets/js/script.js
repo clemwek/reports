@@ -3,7 +3,26 @@ $('document').ready(function() {
     loadAccidentForm();
     loadIncidentForm();
     loadPaymentForm();
+    loaddepartmentForm();
+    loadAddCatfForm();
     loadCatForm();
+
+    $('#addDepartmentForm').on('submit', function(event) {
+        event.preventDefault();
+
+        var mode = 'addDepartment';
+        var data = $('#addDepartmentForm').serialize()+'&mode='+mode;
+        // alert('this is working');
+        $.ajax ({
+            url: 'process_ajax.php',
+            type: 'POST',
+            data: data,
+            success: function(data) {
+                $('#addDepartmentStatus').html(data);
+                $('#addDepartmentAjax').load('modal_forms.php #dep_load');
+            }
+        });
+    });
 
     $('#newStaffForm').on('submit', function (event) {
         event.preventDefault();//prevent form submit
@@ -130,6 +149,21 @@ function loadAccidentForm() {
         $('#accidentAjax').load('modal_forms.php #accident_load');
     });
 }
+
+function loaddepartmentForm() {
+    $('#addDepartment').on('click', function (event) {
+        event.preventDefault();
+        $('#addDepartmentAjax').load('modal_forms.php #dep_load');
+    });
+}
+
+function loadAddCatfForm() {
+    $('#addCat').on('click', function (event) {
+        event.preventDefault();
+        $('#addCatAjax').load('modal_forms.php #addCat_load');
+    });
+}
+
 
 function loadIncidentForm() {
     $('#bIncident').on('click', function (event) {
