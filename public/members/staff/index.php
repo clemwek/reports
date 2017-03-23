@@ -48,9 +48,26 @@ require_once("../../../includes/initialize.php");
 				<h1 class="page-header">Insight Report</h1>
 			</div>
 		</div><!--/.row -Page header-->
+
+		
 		
 		<div class="row">
 			<div class="col-lg-8 col-sm-12">
+
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					Insight report
+				</div>
+				<div class="panel-body">
+					<div class="col-xs-6">
+						<button id="addDepartment" type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addDepartmentModal">Add department</button>
+					</div>
+					<div class="col-xs-6">
+						<button id="addCat" type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addCatModal">Add department</button>
+				</div>
+			</div>
+
+
 				<div class="panel panel-info">
 					<div class="panel-heading">
 						 Insight report
@@ -290,6 +307,56 @@ require_once("../../../includes/initialize.php");
 						<div class="modal-body">
 							<div id="paymentStatus"></div>
 							<div id="paymentAjax"></div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button type="submit" name="submit" class="btn btn-primary">Save changes</button>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<!--/.modal -->
+	<div class="modal fade" id="addDepartmentModal" tabindex="-1" role="dialog" aria-labelledby="addDepartmentModal">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<form action="" id="addDepartmentForm" enctype="multipart/form-data" method="post">
+					<fieldset>
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel">Add Category</h4>
+						</div>
+						<div class="modal-body">
+							<div id="addDepartmentStatus"></div>
+							<div id="addDepartmentAjax"></div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button type="submit" name="submit" class="btn btn-primary">Save changes</button>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<!--/.modal -->
+	<div class="modal fade" id="addCatModal" tabindex="-1" role="dialog" aria-labelledby="addCatModal">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<form action="" id="addCatForm" enctype="multipart/form-data" method="post">
+					<fieldset>
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel">Add Department</h4>
+						</div>
+						<div class="modal-body">
+							<div id="addCatStatus"></div>
+							<div id="addCatAjax"></div>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
