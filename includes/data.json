@@ -1,16 +1,1 @@
-{
-    "sites": [
-        "imc",
-        "kq",
-        "unilever",
-        "paper bags",
-        "Untack",
-        "someother place"
-    ],
-    "categories": [
-        "Machine Attendant",
-        "Machine Operator",
-        "Cleaners",
-        "Others"
-    ]
-}
+{"sites":["imc","kq"],"categories":{"imc":[],"kq":["test"]},"departments":{"imc":[],"kq":["test",null]}}
