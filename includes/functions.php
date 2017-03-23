@@ -288,5 +288,12 @@ function load_json($location) {
   return json_decode($data_json, true);
 }
 
+function save_json($location, $data){
+ 	$json = json_encode($data); // Convert data array back to json
+  $myfile = fopen($location, "w") or die("Unable to open file!"); // Open file
+  fwrite($myfile, $json); // Save file
+  return true;
+}
+
 
 ?>
